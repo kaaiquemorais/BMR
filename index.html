@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMR Saúde e Segurança Ocupacional — Conformidade SST para Empresas</title>
+  <meta name="description" content="Gestão completa de SST, emissão de ASOs e treinamentos obrigatórios. Regularize sua empresa com rapidez, tecnologia e total conformidade legal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Sora', sans-serif;
+      background: #ffffff;
+      color: #1a2332;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --green:       #0eb89d;
+      --green-light: #1dd6b8;
+      --green-dark:  #0a9480;
+      --green-dim:   rgba(14,184,157,.12);
+      --green-glow:  0 0 32px rgba(14,184,157,.35);
+      --navy:        #0d1f2d;
+      --navy-mid:    #142233;
+      --slate:       #2c3e50;
+      --muted:       #64748b;
+      --border:      rgba(14,184,157,.18);
+      --bg-soft:     #f4f9f8;
+      --bg-dark:     #071219;
+      --white:       #ffffff;
+      --radius-sm:   8px;
+      --radius-md:   14px;
+      --radius-lg:   22px;
+      --shadow-card: 0 4px 24px rgba(14,184,157,.10), 0 1px 4px rgba(0,0,0,.06);
+      --shadow-hover:0 12px 40px rgba(14,184,157,.22), 0 2px 8px rgba(0,0,0,.08);
+      --trans:       .3s cubic-bezier(.4,0,.2,1);
+      --container:   1200px;
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container { width: min(var(--container), 100%); margin-inline: auto; padding-inline: clamp(20px, 5vw, 48px); }
+    .section { padding-block: clamp(60px, 8vw, 100px); }
+    .section--dark { background: var(--navy); color: var(--white); }
+    .section--soft { background: var(--bg-soft); }
+    .section--dark-alt { background: var(--navy-mid); color: var(--white); }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-dim); border: 1px solid var(--border);
+      color: var(--green); font-size: .75rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-dim); border: 1px solid var(--border);
+      color: var(--green); font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px; margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 800; line-height: 1.2;
+      letter-spacing: -.02em; margin-bottom: 16px;
+    }
+    .section-title span { color: var(--green); }
+
+    .section-subtitle {
+      font-size: clamp(.95rem, 1.5vw, 1.1rem);
+      color: var(--muted); max-width: 560px; line-height: 1.7;
+    }
+    .section--dark .section-subtitle,
+    .section--dark-alt .section-subtitle { color: rgba(255,255,255,.65); }
+    .section--dark .section-title,
+    .section--dark-alt .section-title { color: var(--white); }
+
+    .text-center { text-align: center; }
+    .text-center .section-subtitle { margin-inline: auto; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: .92rem;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      cursor: pointer; transition: var(--trans); border: none; outline: none;
+      letter-spacing: .01em; white-space: nowrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: var(--white); box-shadow: 0 4px 20px rgba(14,184,157,.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,184,157,.55); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+    .btn-outline-green {
+      background: transparent; color: var(--green);
+      border: 1.5px solid var(--green);
+    }
+    .btn-outline-green:hover { background: var(--green); color: var(--white); }
+    .btn-lg { padding: 17px 36px; font-size: 1rem; }
+    .btn-full { width: 100%; }
+
+    /* Divider */
+    .divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--green), transparent);
+      border-radius: 2px; margin: 16px 0 24px;
+    }
+    .divider--center { margin-inline: auto; }
+
+    /* ============================================================
+       KEYFRAMES
+    ============================================================ */
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.75); }
+    }
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-10px); }
+    }
+    @keyframes ticker {
+      from { transform:translateX(0); }
+      to   { transform:translateX(-50%); }
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes countUp { from { opacity:0; } to { opacity:1; } }
+    @keyframes shimmer {
+      0%   { background-position:-400px 0; }
+      100% { background-position:400px 0; }
+    }
+    @keyframes rotateBorder {
+      0%   { transform:rotate(0deg); }
+      100% { transform:rotate(360deg); }
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 14px 0;
+      background: rgba(7,18,25,.88);
+      backdrop-filter: blur(16px) saturate(160%);
+      border-bottom: 1px solid rgba(14,184,157,.12);
+      transition: var(--trans);
+    }
+    .navbar.scrolled { padding: 10px 0; box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+    .navbar__inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .navbar__logo img { height: 42px; width: auto; }
+    .navbar__nav {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .navbar__nav a {
+      color: rgba(255,255,255,.75); font-size: .85rem; font-weight: 500;
+      transition: color var(--trans);
+    }
+    .navbar__nav a:hover { color: var(--green); }
+    .navbar__cta { display: flex; align-items: center; gap: 12px; }
+    .navbar__hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .navbar__hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px; transition: var(--trans);
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; width: 100%;
+      background: var(--navy); padding: 24px;
+      border-bottom: 1px solid var(--border); z-index: 999;
+      flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.8); font-size: 1rem; font-weight: 500; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative; overflow: hidden;
+      background: var(--navy);
+      padding-top: 72px; /* navbar height */
+    }
+    .hero__image-wrap {
+      position: relative; width: 100%;
+    }
+    .hero__image-wrap img {
+      width: 100%; height: auto;
+      object-fit: contain; display: block;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(7,18,25,.82) 0%,
+        rgba(14,184,157,.12) 60%,
+        transparent 100%
+      );
+    }
+    /* Mobile: overlay from bottom */
+    .hero__content {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+    }
+    .hero__text {
+      max-width: 560px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero__text .badge { margin-bottom: 20px; }
+    .hero__headline {
+      font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+      font-weight: 800; line-height: 1.18; letter-spacing: -.03em;
+      color: var(--white); margin-bottom: 18px;
+    }
+    .hero__headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--green-light), var(--green));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero__sub {
+      font-size: clamp(.88rem, 1.4vw, 1.05rem);
+      color: rgba(255,255,255,.75); line-height: 1.75; margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero__glow {
+      position: absolute; right: -120px; top: 50%; transform: translateY(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,184,157,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__video-section {
+      background: var(--navy); padding: 48px 0 56px;
+      border-top: 1px solid rgba(14,184,157,.12);
+    }
+    .hero__video-label {
+      text-align: center; font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .hero__video-label::before,
+    .hero__video-label::after {
+      content: ''; flex: 1; max-width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--green));
+    }
+    .hero__video-label::after { background: linear-gradient(90deg, var(--green), transparent); }
+
+    /* Paradise Player */
+    #paradisePlayer_1773836581618::-webkit-media-controls,
+    #paradisePlayer_1773836581618::-webkit-media-controls-enclosure { display: none !important; }
+    @keyframes paradise-fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes paradise-mute-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(calc(-10px * var(--animation-intensity)))} }
+    @keyframes paradise-mute-pulse  { 0%,100%{transform:scale(1)}     50%{transform:scale(calc(1 + .05 * var(--animation-intensity)))} }
+    @keyframes paradise-mute-glow   { 0%,100%{box-shadow:0 0 calc(10px * var(--animation-intensity)) #ff7b0050} 50%{box-shadow:0 0 calc(20px * var(--animation-intensity)) #ff7b0080,0 0 calc(30px * var(--animation-intensity)) #ff7b0060} }
+    .paradise-mute-bounce { animation: paradise-mute-bounce 1.4s ease-in-out infinite; }
+    .paradise-player-container * { transition: all .4s cubic-bezier(.25,.46,.45,.94); }
+
+    /* ============================================================
+       TICKER STRIP
+    ============================================================ */
+    .ticker {
+      background: linear-gradient(90deg, var(--green-dark) 0%, var(--green) 50%, var(--green-dark) 100%);
+      overflow: hidden; padding: 13px 0; position: relative; z-index: 10;
+    }
+    .ticker__track {
+      display: flex; width: max-content;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker__track:hover { animation-play-state: paused; }
+    .ticker__item {
+      display: flex; align-items: center; gap: 14px;
+      padding-inline: 36px; color: var(--white);
+      font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .ticker__sep {
+      width: 5px; height: 5px; background: rgba(255,255,255,.5); border-radius: 50%;
+    }
+
+    /* ============================================================
+       STATS
+    ============================================================ */
+    .stats { background: var(--white); padding-block: clamp(50px, 6vw, 80px); }
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .stat-card {
+      background: var(--white); padding: 36px 28px; text-align: center;
+      transition: var(--trans);
+    }
+    .stat-card:hover { background: var(--bg-soft); }
+    .stat-card__icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .stat-card__num {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+      color: var(--green); line-height: 1; margin-bottom: 6px; letter-spacing: -.03em;
+    }
+    .stat-card__label { font-size: .83rem; color: var(--muted); font-weight: 500; line-height: 1.4; }
+
+    /* ============================================================
+       PROBLEM
+    ============================================================ */
+    .problem__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .risk-list { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .risk-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 20px; border-radius: var(--radius-md);
+      background: var(--white); border: 1px solid var(--border);
+      box-shadow: var(--shadow-card); transition: var(--trans);
+    }
+    .risk-item:hover { transform: translateX(6px); box-shadow: var(--shadow-hover); }
+    .risk-item__icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fff0f0, #ffe0e0);
+    }
+    .risk-item__text { font-size: .9rem; font-weight: 500; color: var(--slate); line-height: 1.5; }
+    .risk-item__text strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .problem__img-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+    .problem__img-wrap img { width: 100%; height: 440px; object-fit: cover; border-radius: var(--radius-lg); }
+    .problem__img-badge {
+      position: absolute; bottom: 24px; left: 24px; right: 24px;
+      background: rgba(7,18,25,.88); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 14px 18px; color: var(--white); font-size: .82rem; font-weight: 500;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .problem__img-badge span { font-size: 1.3rem; }
+
+    /* ============================================================
+       SOLUTIONS
+    ============================================================ */
+    .solutions__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .sol-card {
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: var(--trans); cursor: default; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .sol-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+      opacity: 0; transition: var(--trans);
+    }
+    .sol-card:hover { background: rgba(14,184,157,.07); transform: translateY(-6px); box-shadow: var(--green-glow); }
+    .sol-card:hover::before { opacity: 1; }
+    .sol-card__icon {
+      width: 54px; height: 54px; border-radius: var(--radius-md);
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .sol-card__title { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 10px; text-align: center; }
+    .sol-card__text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; text-align: center; }
+
+    /* ============================================================
+       ASO
+    ============================================================ */
+    .aso__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .aso__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .aso-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 22px;
+      box-shadow: var(--shadow-card); transition: var(--trans);
+      text-align: center;
+    }
+    .aso-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+    .aso-card__icon {
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .aso-card__name { font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .aso-card__desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+    .aso__img { border-radius: var(--radius-lg); overflow: hidden; }
+    .aso__img img { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-lg); }
+
+    /* ============================================================
+       TRAINING
+    ============================================================ */
+    .training__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .training__img { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+    .training__img img { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-lg); }
+    .training__img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(7,18,25,.6) 0%, transparent 60%);
+      border-radius: var(--radius-lg);
+    }
+    .training-list { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .training-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px; border-radius: var(--radius-md);
+      background: var(--bg-soft); border: 1px solid var(--border);
+      transition: var(--trans);
+    }
+    .training-item:hover { background: var(--green-dim); border-color: var(--green); }
+    .training-item__check {
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: .7rem; font-weight: 800;
+    }
+    .training-item__text { font-size: .9rem; font-weight: 500; color: var(--slate); }
+
+    /* ============================================================
+       BENEFITS
+    ============================================================ */
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .benefit-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      box-shadow: var(--shadow-card); transition: var(--trans); text-align: center;
+    }
+    .benefit-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-6px); }
+    .benefit-card__icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-dim), rgba(14,184,157,.25));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem; margin: 0 auto 20px;
+      box-shadow: var(--green-glow);
+    }
+    .benefit-card__title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .benefit-card__text { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+    /* ============================================================
+       DIFFERENTIALS
+    ============================================================ */
+    .diff__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .diff-card {
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: var(--trans); position: relative; overflow: hidden;
+    }
+    .diff-card:hover { background: rgba(14,184,157,.08); box-shadow: var(--green-glow); }
+    .diff-card__num {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 4rem; font-weight: 800; color: rgba(14,184,157,.08); line-height: 1;
+    }
+    .diff-card__icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .diff-card__title { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .diff-card__text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .testi-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+      box-shadow: var(--shadow-card); transition: var(--trans);
+    }
+    .testi-card:hover { box-shadow: var(--shadow-hover); }
+    .testi-card__stars { color: #f59e0b; font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-card__quote { font-size: .9rem; color: var(--slate); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .testi-card__author { display: flex; align-items: center; gap: 12px; }
+    .testi-card__avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 700; font-size: .9rem;
+    }
+    .testi-card__name { font-size: .88rem; font-weight: 700; color: var(--navy); }
+    .testi-card__role { font-size: .78rem; color: var(--muted); }
+
+    .logos-strip {
+      margin-top: 56px; padding: 28px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .logos-strip__label { text-align: center; font-size: .75rem; font-weight: 600; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 24px; }
+    .logos-strip__grid {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 32px;
+    }
+    .logo-placeholder {
+      height: 36px; padding: 0 20px; border-radius: var(--radius-sm);
+      background: var(--bg-soft); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 700; color: var(--muted); letter-spacing: .05em;
+    }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    .process__steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0; margin-top: 56px; position: relative;
+    }
+    .process__steps::before {
+      content: ''; position: absolute; top: 40px; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      z-index: 0;
+    }
+    .step-card {
+      text-align: center; padding: 0 24px; position: relative; z-index: 1;
+    }
+    .step-card__num {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; color: var(--white);
+      font-size: 1.5rem; font-weight: 800; box-shadow: var(--green-glow);
+      transition: var(--trans);
+    }
+    .step-card:hover .step-card__num { transform: scale(1.1); }
+    .step-card__title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .step-card__text { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.65; }
+
+    /* ============================================================
+       UNITS
+    ============================================================ */
+    .units__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+    .unit-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px;
+      box-shadow: var(--shadow-card); transition: var(--trans);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .unit-card::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle at top right, var(--green-dim), transparent);
+    }
+    .unit-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+    .unit-card__icon {
+      width: 54px; height: 54px; border-radius: var(--radius-md);
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .unit-card__city { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; text-align: center; }
+    .unit-card__address { font-size: .87rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; text-align: center; }
+    .unit-card__phone {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: .9rem; font-weight: 600; color: var(--green);
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq__list { max-width: 760px; margin: 48px auto 0; }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      overflow: hidden; margin-bottom: 12px; transition: var(--trans);
+    }
+    .faq-item.open { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-dim); }
+    .faq-btn {
+      width: 100%; background: var(--white); border: none; padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      font-family: 'Sora', sans-serif; font-size: .95rem; font-weight: 600;
+      color: var(--navy); cursor: pointer; text-align: left; transition: var(--trans);
+    }
+    .faq-btn:hover { background: var(--bg-soft); }
+    .faq-btn__icon {
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
+      background: var(--green-dim); display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 1.1rem; font-weight: 700;
+      transition: transform var(--trans);
+    }
+    .faq-item.open .faq-btn__icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease;
+      background: var(--white);
+    }
+    .faq-answer__inner {
+      padding: 0 24px 20px; font-size: .88rem; color: var(--muted); line-height: 1.75;
+    }
+
+    /* ============================================================
+       FINAL CTA
+    ============================================================ */
+    .cta-final {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%);
+      padding-block: clamp(64px, 8vw, 100px); text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-final__title {
+      font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 800;
+      color: var(--white); margin-bottom: 16px; letter-spacing: -.02em;
+    }
+    .cta-final__sub {
+      font-size: clamp(.9rem, 1.5vw, 1.1rem);
+      color: rgba(255,255,255,.85); margin-bottom: 36px; max-width: 520px; margin-inline: auto;
+    }
+    .cta-final .btn-white {
+      background: var(--white); color: var(--green-dark); font-weight: 700;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+    }
+    .cta-final .btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+    .cta-final__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--bg-dark); color: rgba(255,255,255,.7);
+      padding-block: clamp(48px, 6vw, 72px) 24px;
+      border-top: 1px solid rgba(14,184,157,.15);
+    }
+    .footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer__brand img { height: 38px; margin-bottom: 16px; }
+    .footer__brand p { font-size: .85rem; line-height: 1.7; margin-bottom: 20px; }
+    .footer__col-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 20px; }
+    .footer__col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer__col ul li a { font-size: .85rem; transition: color var(--trans); }
+    .footer__col ul li a:hover { color: var(--green); }
+    .footer__col address { font-style: normal; font-size: .84rem; line-height: 1.8; }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 24px; display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px; font-size: .78rem; color: rgba(255,255,255,.35);
+    }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right { opacity: 0; transform: translateX(28px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .problem__grid,
+      .aso__grid,
+      .training__grid { grid-template-columns: 1fr; gap: 40px; }
+      .problem__img-wrap { order: -1; }
+      .training__img { order: -1; }
+      .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process__steps::before { display: none; }
+    }
+    @media (max-width: 700px) {
+      .navbar__nav, .navbar__cta .btn:not(.btn-primary) { display: none; }
+      .navbar__hamburger { display: flex; }
+      /* Hero mobile */
+      .hero__content { align-items: flex-end; padding-bottom: 28px; }
+      .hero__text { max-width: 100%; text-align: center; }
+      .hero__sub { max-width: 100%; }
+      .hero__actions { flex-direction: column; }
+      .hero__actions .btn { width: 100%; }
+      .hero__glow { display: none; }
+      .aso__cards { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats__grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="navbar__inner">
+        <a href="#" class="navbar__logo">
+          <img src="https://i.postimg.cc/5yL8B4kZ/logo-bmr.png" alt="BMR Saúde e Segurança Ocupacional" />
+        </a>
+        <ul class="navbar__nav">
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#aso">ASO</a></li>
+          <li><a href="#treinamentos">Treinamentos</a></li>
+          <li><a href="#processo">Como Funciona</a></li>
+          <li><a href="#unidades">Unidades</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="navbar__cta">
+          <a href="tel:+551134044187" class="btn btn-outline" style="padding:10px 20px;font-size:.82rem;">(11) 3404-4187</a>
+          <a href="#cta-final" class="btn btn-primary" style="padding:10px 20px;font-size:.82rem;">Diagnóstico Gratuito</a>
+        </div>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#solucoes">Soluções</a>
+    <a href="#aso">ASO</a>
+    <a href="#treinamentos">Treinamentos</a>
+    <a href="#processo">Como Funciona</a>
+    <a href="#unidades">Unidades</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta-final" class="btn btn-primary btn-full" style="margin-top:8px;">Diagnóstico Gratuito</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero__image-wrap">
+      <!-- Desktop image -->
+      <picture>
+        <source media="(max-width: 700px)" srcset="https://i.postimg.cc/Wbp46pKS/hero-bmr-mobile.png" />
+        <img
+          src="https://i.postimg.cc/W3M4Sdsc/hero-bmr-desk.png"
+          alt="BMR Saúde e Segurança Ocupacional — Equipe profissional"
+        />
+      </picture>
+      <div class="hero__overlay"></div>
+      <div class="hero__glow"></div>
+
+      <div class="hero__content">
+        <div class="container">
+          <div class="hero__text">
+            <div class="badge">
+              <span>Saúde &amp; Segurança Ocupacional</span>
+            </div>
+            <h1 class="hero__headline">
+              Regularize sua empresa em SST com<br />
+              <em>rapidez, tecnologia</em> e total<br />conformidade legal
+            </h1>
+            <p class="hero__sub">
+              Gestão completa de SST, emissão de ASOs e treinamentos obrigatórios para empresas que desejam evitar multas, processos trabalhistas e riscos operacionais.
+            </p>
+            <div class="hero__actions">
+              <a href="#cta-final" class="btn btn-primary btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Solicitar Diagnóstico Gratuito
+              </a>
+              <a href="https://wa.me/5511945161222" target="_blank" class="btn btn-outline btn-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Falar com um Especialista
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Video -->
+    <div class="hero__video-section">
+      <div class="container">
+        <div class="hero__video-label">Assista e entenda como protegemos sua empresa</div>
+
+        <div id="paradisePlayer_1773836581618Container" class="paradise-player-container" style="position:relative;width:100%;max-width:800px;margin:0 auto;">
+          <div id="paradisePlayer_1773836581618Wrapper" style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:17px;overflow:hidden;box-shadow:0 0 20px #ff7b0050,0 0 5px #ff7b0080;">
+            <video
+              id="paradisePlayer_1773836581618"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;cursor:pointer;"
+              playsinline
+              webkit-playsinline
+              preload="auto"
+              oncontextmenu="return false;"
+            >
+              <source src="https://www.pexels.com/pt-br/video/36623289/" type="video/mp4">
+              Seu navegador não suporta vídeos HTML5.
+            </video>
+
+            <div id="paradisePlayer_1773836581618MuteOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:#00000000;cursor:pointer;z-index:20;backdrop-filter:blur(2px);">
+              <div id="paradisePlayer_1773836581618MuteButton" class="paradise-mute-bounce" style="background:#ff7b00;padding:clamp(.96rem,5vw,1.6rem) clamp(1.2rem,7vw,2.4rem);border-radius:12px;text-align:center;color:#fff;--animation-intensity:0.5;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:90vw;box-sizing:border-box;">
+                <div style="font-size:clamp(.72rem,2.5vw,.88rem);font-weight:700;margin-bottom:.4rem;font-family:'Sora',sans-serif;">Seu vídeo já começou!</div>
+                <div style="margin-bottom:.48rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Unmute" style="width:clamp(2rem,8vw,2.8rem);height:clamp(2rem,8vw,2.8rem);filter:brightness(0) invert(1);display:inline-block;"></div>
+                <div style="font-size:clamp(.64rem,2.2vw,.8rem);font-weight:500;opacity:.95;font-family:'Sora',sans-serif;">Clique para ativar o som</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TICKER ===================== -->
+  <div class="ticker">
+    <div class="ticker__track" id="tickerTrack">
+      <!-- Items duplicated for seamless loop -->
+    </div>
+  </div>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat-card reveal">
+          <div class="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M5 3H3v7a7 7 0 0014 0V3h-2"/><path d="M3 7H1M21 7h2"/></svg></div>
+          <div class="stat-card__num" data-target="15">0</div>
+          <div class="stat-card__label">Anos de experiência<br />no mercado</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9M15 21V9"/></svg></div>
+          <div class="stat-card__num" data-target="500" data-suffix="+">0</div>
+          <div class="stat-card__label">Empresas<br />atendidas</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></div>
+          <div class="stat-card__num" data-target="50" data-suffix="k+">0</div>
+          <div class="stat-card__label">Atendimentos<br />realizados</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="stat-card__num" data-target="98" data-suffix="%">0</div>
+          <div class="stat-card__label">Taxa de satisfação<br />dos clientes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROBLEM ===================== -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="problem__grid">
+        <div class="reveal-left">
+          <div class="section-tag">Diagnóstico</div>
+          <h2 class="section-title">Sua empresa está preparada para <span>fiscalizações</span> e exigências legais?</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            A ausência de uma gestão eficiente de SST expõe sua empresa a riscos severos que comprometem a operação, as finanças e a reputação do negócio.
+          </p>
+          <div class="risk-list">
+            <div class="risk-item">
+              <div class="risk-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+              <div class="risk-item__text">
+                <strong>Multas e autuações trabalhistas</strong>
+                Penalidades que podem ultrapassar dezenas de salários mínimos por infração identificada em fiscalizações do MTE.
+              </div>
+            </div>
+            <div class="risk-item">
+              <div class="risk-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V2M12 2L4 6l8 4 8-4-8-4zM4 18l8 4 8-4M4 14l8 4 8-4"/></svg></div>
+              <div class="risk-item__text">
+                <strong>Processos judiciais e passivos trabalhistas</strong>
+                Ações movidas por colaboradores afastados, com potencial de passivos milionários e danos à imagem corporativa.
+              </div>
+            </div>
+            <div class="risk-item">
+              <div class="risk-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+              <div class="risk-item__text">
+                <strong>Documentação desorganizada</strong>
+                Laudos vencidos, ASOs em atraso e registros incompletos colocam em risco a conformidade legal da empresa.
+              </div>
+            </div>
+            <div class="risk-item">
+              <div class="risk-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+              <div class="risk-item__text">
+                <strong>Impacto financeiro e operacional</strong>
+                Afastamentos não gerenciados elevam custos com substitutos, reduzem a produtividade e aumentam o índice de sinistralidade.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="problem__img-wrap reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80&fit=crop"
+            alt="Ambiente corporativo seguro"
+          />
+          <div class="problem__img-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Com a BMR, sua empresa fica em total conformidade legal com as Normas Regulamentadoras
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOLUTIONS ===================== -->
+  <section class="section section--dark" id="solucoes">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Nossos Serviços</div>
+        <h2 class="section-title">Soluções completas em <span>Saúde e Segurança</span> do Trabalho</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Uma plataforma completa de serviços para manter sua empresa sempre em dia com todas as obrigações legais.</p>
+      </div>
+      <div class="solutions__grid">
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></div>
+          <div class="sol-card__title">PCMSO — Programa de Controle Médico</div>
+          <div class="sol-card__text">Elaboração e gestão do Programa de Controle Médico de Saúde Ocupacional, com exames periódicos, admissionais e demissionais.</div>
+        </div>
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="sol-card__title">PGR — Programa de Gerenciamento</div>
+          <div class="sol-card__text">Identificação, avaliação e controle dos riscos ocupacionais presentes no ambiente de trabalho, em conformidade com a NR-01.</div>
+        </div>
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="sol-card__title">ASO — Atestados de Saúde Ocupacional</div>
+          <div class="sol-card__text">Emissão de ASOs admissionais, demissionais, periódicos, de retorno ao trabalho e envios automáticos ao eSocial.</div>
+        </div>
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="sol-card__title">Gestão e Envio ao eSocial</div>
+          <div class="sol-card__text">Integração completa com a plataforma eSocial, garantindo envio correto e tempestivo de todos os eventos de SST obrigatórios.</div>
+        </div>
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="sol-card__title">Treinamentos Obrigatórios</div>
+          <div class="sol-card__text">Capacitações conforme NRs vigentes, com emissão de certificados, controle de validade e gestão de turmas.</div>
+        </div>
+        <div class="sol-card reveal">
+          <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <div class="sol-card__title">Consultoria e Laudos Técnicos</div>
+          <div class="sol-card__text">Elaboração de LIP, LTCAT, PPP e demais laudos exigidos pela legislação trabalhista e previdenciária.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ASO ===================== -->
+  <section class="section" id="aso">
+    <div class="container">
+      <div class="aso__grid">
+        <div class="reveal-left">
+          <div class="section-tag">Medicina Ocupacional</div>
+          <h2 class="section-title">Atestados de Saúde <span>Ocupacional</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            Agilidade, precisão e total conformidade na emissão de ASOs para todas as etapas da jornada do colaborador na sua empresa.
+          </p>
+          <div class="aso__cards">
+            <div class="aso-card">
+              <div class="aso-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
+              <div class="aso-card__name">Admissão</div>
+              <div class="aso-card__desc">Avaliação antes do início das atividades com agilidade e precisão.</div>
+            </div>
+            <div class="aso-card">
+              <div class="aso-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
+              <div class="aso-card__name">Demissão</div>
+              <div class="aso-card__desc">Avaliação obrigatória ao encerramento do vínculo empregatício.</div>
+            </div>
+            <div class="aso-card">
+              <div class="aso-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
+              <div class="aso-card__name">Periódicos</div>
+              <div class="aso-card__desc">Monitoramento contínuo da saúde ocupacional conforme PCMSO.</div>
+            </div>
+            <div class="aso-card">
+              <div class="aso-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg></div>
+              <div class="aso-card__name">Retorno ao Trabalho</div>
+              <div class="aso-card__desc">Avaliação após afastamentos por doença ou acidente de trabalho.</div>
+            </div>
+            <div class="aso-card" style="grid-column: 1 / -1;">
+              <div class="aso-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></div>
+              <div class="aso-card__name">Envios ao eSocial</div>
+              <div class="aso-card__desc">Integração e transmissão automática dos eventos de SST para o eSocial, sem burocracia.</div>
+            </div>
+          </div>
+        </div>
+        <div class="aso__img reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop"
+            alt="Atendimento médico ocupacional"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRAINING ===================== -->
+  <section class="section section--soft" id="treinamentos">
+    <div class="container">
+      <div class="training__grid">
+        <div class="training__img reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop"
+            alt="Treinamento com EPI e segurança do trabalho"
+          />
+          <div class="training__img-overlay"></div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-tag">Capacitação Profissional</div>
+          <h2 class="section-title">Treinamentos que <span>protegem</span> sua equipe e sua empresa</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">
+            Capacitações obrigatórias e complementares realizadas por profissionais especializados, com emissão de certificados e controle de vencimento.
+          </p>
+          <div class="training-list">
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">NR-06 — Uso correto de EPIs e equipamentos de proteção individual</div>
+            </div>
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">NR-10 — Segurança em instalações e serviços em eletricidade</div>
+            </div>
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">NR-35 — Trabalho em altura, prevenção e controle de riscos</div>
+            </div>
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">Primeiros Socorros e atendimento emergencial no ambiente de trabalho</div>
+            </div>
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">CIPA — Comissão Interna de Prevenção de Acidentes (NR-05)</div>
+            </div>
+            <div class="training-item">
+              <div class="training-item__check">✓</div>
+              <div class="training-item__text">Brigada de Incêndio e planos de emergência e evacuação</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BENEFITS ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Resultados</div>
+        <h2 class="section-title">Resultados que sua empresa <span>pode alcançar</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Empresas que contam com gestão profissional de SST operam com mais segurança, eficiência e tranquilidade jurídica.</p>
+      </div>
+      <div class="benefits__grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="benefit-card__title">Redução de Riscos</div>
+          <div class="benefit-card__text">Diminuição significativa de acidentes de trabalho e doenças ocupacionais com gestão preventiva contínua.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div class="benefit-card__title">Segurança Jurídica</div>
+          <div class="benefit-card__text">Proteção total contra autuações, multas e processos trabalhistas relacionados ao descumprimento de NRs.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
+          <div class="benefit-card__title">Organização Documental</div>
+          <div class="benefit-card__text">Toda a documentação de SST centralizada, organizada e sempre atualizada para auditorias e fiscalizações.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div class="benefit-card__title">Conformidade Legal</div>
+          <div class="benefit-card__text">Adequação contínua às normas regulamentadoras vigentes e às obrigações do eSocial S-2210 e S-2240.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="benefit-card__title">Mais Produtividade</div>
+          <div class="benefit-card__text">Equipes mais seguras, motivadas e saudáveis geram melhores resultados e menos absenteísmo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DIFFERENTIALS ===================== -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Nossos Diferenciais</div>
+        <h2 class="section-title">Por que escolher <span>a BMR?</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Mais de uma década de experiência, tecnologia de ponta e um time dedicado a manter sua empresa sempre em conformidade.</p>
+      </div>
+      <div class="diff__grid">
+        <div class="diff-card reveal">
+          <div class="diff-card__num">01</div>
+          <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="diff-card__title">Atendimento Especializado</div>
+          <div class="diff-card__text">Equipe multidisciplinar com médicos do trabalho, engenheiros de segurança e técnicos especializados prontos para atender cada necessidade da sua empresa.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card__num">02</div>
+          <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="diff-card__title">Agilidade nos Processos</div>
+          <div class="diff-card__text">Processos otimizados e digitalização completa garantem a entrega rápida de documentos, laudos e ASOs sem burocracia excessiva.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card__num">03</div>
+          <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div class="diff-card__title">Suporte Técnico Dedicado</div>
+          <div class="diff-card__text">Canal exclusivo de atendimento com consultores especializados para tirar dúvidas e orientar sua empresa em tempo real.</div>
+        </div>
+        <div class="diff-card reveal">
+          <div class="diff-card__num">04</div>
+          <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+          <div class="diff-card__title">Gestão Completa e Integrada</div>
+          <div class="diff-card__text">Da elaboração de laudos ao envio automático ao eSocial, gerenciamos todo o ciclo de SST da sua empresa em um único parceiro.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Depoimentos</div>
+        <h2 class="section-title">O que nossos clientes <span>dizem</span></h2>
+        <div class="divider divider--center"></div>
+      </div>
+      <div class="testimonials__grid">
+        <div class="testi-card reveal">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"A BMR transformou nossa gestão de SST. Antes tínhamos documentação desatualizada e medo de fiscalizações. Hoje operamos com total tranquilidade e conformidade."</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">RM</div>
+            <div>
+              <div class="testi-card__name">Ricardo Mendes</div>
+              <div class="testi-card__role">Diretor de RH — Metalúrgica Industrial</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"Profissionalismo e agilidade excepcionais. Os ASOs admissionais são emitidos no mesmo dia e a integração com o eSocial nos poupou horas de trabalho manual toda semana."</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">CA</div>
+            <div>
+              <div class="testi-card__name">Carla Andrade</div>
+              <div class="testi-card__role">Gerente Administrativa — Distribuidora Regional</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"Depois de uma autuação do MTE, buscamos a BMR e a mudança foi completa. Em três meses estávamos totalmente regularizados. Recomendo a todas as empresas."</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">PS</div>
+            <div>
+              <div class="testi-card__name">Paulo Silva</div>
+              <div class="testi-card__role">CEO — Construtora Alphaville</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partner Logos -->
+      <div class="logos-strip reveal">
+        <div class="logos-strip__label">Empresas que confiam na BMR</div>
+        <div class="logos-strip__grid">
+          <div class="logo-placeholder">METALÚRGICA</div>
+          <div class="logo-placeholder">DISTRIBUIDORA</div>
+          <div class="logo-placeholder">CONSTRUTORA</div>
+          <div class="logo-placeholder">INDÚSTRIA</div>
+          <div class="logo-placeholder">LOGÍSTICA</div>
+          <div class="logo-placeholder">ALIMENTÍCIO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
+  <section class="section section--dark" id="processo">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Metodologia</div>
+        <h2 class="section-title">Como funciona o <span>nosso atendimento</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Um processo estruturado e transparente para levar sua empresa à conformidade total em SST.</p>
+      </div>
+      <div class="process__steps">
+        <div class="step-card reveal">
+          <div class="step-card__num">1</div>
+          <div class="step-card__title">Diagnóstico</div>
+          <div class="step-card__text">Mapeamento completo da situação atual da empresa em relação às obrigações de SST e identificação de gaps e riscos.</div>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__num">2</div>
+          <div class="step-card__title">Planejamento</div>
+          <div class="step-card__text">Elaboração de um plano de ação personalizado com prazos, responsabilidades e prioridades definidas para cada empresa.</div>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__num">3</div>
+          <div class="step-card__title">Implementação</div>
+          <div class="step-card__text">Execução do plano com elaboração de documentos, realização de exames, treinamentos e configuração do eSocial.</div>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__num">4</div>
+          <div class="step-card__title">Acompanhamento</div>
+          <div class="step-card__text">Gestão contínua e monitoramento proativo de vencimentos, novos colaboradores e atualizações normativas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UNITS ===================== -->
+  <section class="section" id="unidades">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Localização</div>
+        <h2 class="section-title">Nossas <span>unidades</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Presente nas principais cidades da região, com estrutura completa para atender sua empresa com excelência.</p>
+      </div>
+      <div class="units__grid">
+        <div class="unit-card reveal">
+          <div class="unit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="unit-card__city">Bragança Paulista</div>
+          <div class="unit-card__address">
+            R. São Paulo, 61<br />
+            Vila Municipal<br />
+            Bragança Paulista — SP
+          </div>
+          <a href="tel:+551134044187" class="unit-card__phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (11) 3404-4187
+          </a>
+        </div>
+        <div class="unit-card reveal">
+          <div class="unit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="unit-card__city">Atibaia</div>
+          <div class="unit-card__address">
+            R. São Vicente de Paula, 267<br />
+            Centro<br />
+            Atibaia — SP
+          </div>
+          <a href="tel:+5511945161222" class="unit-card__phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (11) 94516-1222
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section section--soft" id="faq">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Dúvidas Frequentes</div>
+        <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Tire suas principais dúvidas sobre SST e entenda como a BMR pode ajudar sua empresa.</p>
+      </div>
+      <div class="faq__list">
+        <div class="faq-item reveal">
+          <button class="faq-btn">
+            Quais empresas são obrigadas a ter gestão de SST?
+            <span class="faq-btn__icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">
+              Toda empresa com pelo menos um funcionário CLT é obrigada a cumprir as Normas Regulamentadoras de Saúde e Segurança do Trabalho. Isso inclui elaboração do PCMSO, PGR/PPRA, realização de ASOs e treinamentos obrigatórios. O não cumprimento sujeita a empresa a autuações e multas pelo Ministério do Trabalho e Emprego.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-btn">
+            Como funciona o ASO e quando é obrigatório?
+            <span class="faq-btn__icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">
+              O Atestado de Saúde Ocupacional (ASO) é um documento médico obrigatório emitido após a realização de exames ocupacionais. É exigido nas seguintes situações: admissão (antes do início das atividades), periodicamente (conforme cronograma do PCMSO), retorno ao trabalho após afastamento superior a 30 dias, mudança de função e desligamento. Todos os ASOs devem ser enviados ao eSocial.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-btn">
+            Quais treinamentos de SST são obrigatórios por lei?
+            <span class="faq-btn__icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">
+              Os treinamentos obrigatórios variam de acordo com a atividade da empresa, mas os mais comuns incluem: NR-06 (EPIs), NR-10 (eletricidade), NR-35 (trabalho em altura), NR-05 (CIPA), Primeiros Socorros e Brigada de Incêndio. A BMR mapeia quais treinamentos são necessários para cada empresa e realiza toda a capacitação com emissão de certificados.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-btn">
+            Como funciona o envio de SST ao eSocial?
+            <span class="faq-btn__icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">
+              O eSocial exige o envio de eventos específicos de SST, como S-2210 (comunicação de acidente de trabalho), S-2220 (monitoramento de saúde do trabalhador/ASO) e S-2240 (condições ambientais do trabalho). A BMR realiza a integração completa com o sistema do governo, garantindo o envio correto e no prazo de todos os eventos obrigatórios, evitando inconsistências e penalidades.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-btn">
+            Quanto tempo leva para regularizar minha empresa?
+            <span class="faq-btn__icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer__inner">
+              O prazo varia de acordo com o porte da empresa e o nível de adequação atual. Após o diagnóstico inicial gratuito, apresentamos um cronograma detalhado. Na maioria dos casos, a regularização básica pode ser concluída em 30 a 60 dias, incluindo elaboração de PCMSO/PGR, realização dos exames admissionais pendentes e configuração do eSocial.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="cta-final" id="cta-final">
+    <div class="container">
+      <div class="reveal">
+        <h2 class="cta-final__title">Garanta a regularidade<br />da sua empresa agora</h2>
+        <p class="cta-final__sub">
+          Solicite seu diagnóstico gratuito e descubra em minutos como a BMR pode proteger sua empresa de riscos legais e operacionais.
+        </p>
+        <div class="cta-final__actions">
+          <a href="https://wa.me/5511945161222?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20proposta%20personalizada%20de%20SST." target="_blank" class="btn btn-white btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Solicitar Proposta Personalizada
+          </a>
+          <a href="tel:+551134044187" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:#fff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (11) 3404-4187
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="https://i.postimg.cc/5yL8B4kZ/logo-bmr.png" alt="BMR Saúde e Segurança Ocupacional" />
+          <p>Especialistas em Saúde e Segurança Ocupacional, oferecendo soluções completas de SST para empresas de todos os portes com tecnologia, agilidade e conformidade legal total.</p>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Serviços</div>
+          <ul>
+            <li><a href="#solucoes">PCMSO</a></li>
+            <li><a href="#solucoes">PGR</a></li>
+            <li><a href="#aso">ASO</a></li>
+            <li><a href="#treinamentos">Treinamentos</a></li>
+            <li><a href="#solucoes">Laudos Técnicos</a></li>
+            <li><a href="#solucoes">eSocial SST</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Empresa</div>
+          <ul>
+            <li><a href="#processo">Como Funciona</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#unidades">Nossas Unidades</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Contato</div>
+          <address>
+            <strong style="color:rgba(255,255,255,.85);font-size:.84rem;">Bragança Paulista</strong><br/>
+            R. São Paulo, 61 — Vila Municipal<br/>
+            (11) 3404-4187<br/><br/>
+            <strong style="color:rgba(255,255,255,.85);font-size:.84rem;">Atibaia</strong><br/>
+            R. São Vicente de Paula, 267 — Centro<br/>
+            (11) 94516-1222
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 BMR Saúde e Segurança Ocupacional. Todos os direitos reservados.</span>
+        <span>CNPJ: 00.000.000/0000-00</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    /* ----- NAVBAR scroll ----- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* ----- Hamburger menu ----- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    /* ----- Ticker ----- */
+    const benefits = [
+      'Redução de riscos trabalhistas',
+      'Conformidade com normas regulamentadoras',
+      'Prevenção de multas',
+      'Gestão completa de SST',
+      'Organização documental',
+      'Segurança operacional',
+      'Mais produtividade',
+      'Equipe preparada',
+    ];
+    const track = document.getElementById('tickerTrack');
+    const itemsHTML = benefits.map(b =>
+      `<span class="ticker__item">${b}<span class="ticker__sep"></span></span>`
+    ).join('');
+    // duplicate for seamless loop
+    track.innerHTML = itemsHTML + itemsHTML;
+
+    /* ----- Scroll reveal ----- */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 80}ms`;
+      observer.observe(el);
+    });
+
+    /* ----- Counter animation ----- */
+    function animateCount(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+      const update = (now) => {
+        const elapsed = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - elapsed, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (elapsed < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCount(e.target);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-card__num[data-target]').forEach(el => counterObserver.observe(el));
+
+    /* ----- FAQ accordion ----- */
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // open clicked if was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* ----- Smooth anchor scroll with offset ----- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+  <script>
+  (function() {
+    const video       = document.getElementById('paradisePlayer_1773836581618');
+    const muteOverlay = document.getElementById('paradisePlayer_1773836581618MuteOverlay');
+    if (!video) { console.error('Paradise Player: Video element #paradisePlayer_1773836581618 not found.'); return; }
+
+    video.addEventListener('click', () => { video.paused ? video.play() : video.pause(); });
+
+    video.playbackRate = 1;
+    video.muted = true;
+    const p = video.play();
+    if (p !== undefined) p.catch(() => {});
+
+    if (muteOverlay) {
+      const unmuteHandler = () => {
+        video.muted = false;
+        video.currentTime = 0;
+        video.play();
+        muteOverlay.style.opacity = '0';
+        setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+        if (window.paradiseTracker && window.paradiseTracker.send) {
+          window.paradiseTracker.send('unmute');
+          window.paradiseTracker.send('play');
+        }
+      };
+      muteOverlay.addEventListener('click',    unmuteHandler, { once: true });
+      muteOverlay.addEventListener('touchend', unmuteHandler, { once: true });
+    }
+  })();
+  </script>
+</body>
+</html>
