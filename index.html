@@ -258,32 +258,32 @@
       background: radial-gradient(circle, rgba(14,184,157,.18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero__video-section {
+
+    /* ============================================================
+       HERO VSL
+    ============================================================ */
+    .hero__vsl {
       background: var(--navy); padding: 48px 0 56px;
       border-top: 1px solid rgba(14,184,157,.12);
     }
-    .hero__video-label {
+    .hero__vsl-label {
       text-align: center; font-size: .8rem; font-weight: 600;
       letter-spacing: .1em; text-transform: uppercase;
       color: var(--green); margin-bottom: 24px;
       display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .hero__video-label::before,
-    .hero__video-label::after {
+    .hero__vsl-label::before,
+    .hero__vsl-label::after {
       content: ''; flex: 1; max-width: 80px; height: 1px;
       background: linear-gradient(90deg, transparent, var(--green));
     }
-    .hero__video-label::after { background: linear-gradient(90deg, var(--green), transparent); }
-
-    /* Paradise Player */
-    #paradisePlayer_1773836581618::-webkit-media-controls,
-    #paradisePlayer_1773836581618::-webkit-media-controls-enclosure { display: none !important; }
-    @keyframes paradise-fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .hero__vsl-label::after { background: linear-gradient(90deg, var(--green), transparent); }
+    #paradisePlayer_1773842475453::-webkit-media-controls,
+    #paradisePlayer_1773842475453::-webkit-media-controls-enclosure { display: none !important; }
     @keyframes paradise-mute-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(calc(-10px * var(--animation-intensity)))} }
-    @keyframes paradise-mute-pulse  { 0%,100%{transform:scale(1)}     50%{transform:scale(calc(1 + .05 * var(--animation-intensity)))} }
-    @keyframes paradise-mute-glow   { 0%,100%{box-shadow:0 0 calc(10px * var(--animation-intensity)) #ff7b0050} 50%{box-shadow:0 0 calc(20px * var(--animation-intensity)) #ff7b0080,0 0 calc(30px * var(--animation-intensity)) #ff7b0060} }
+    @keyframes paradise-mute-glow   { 0%,100%{box-shadow:0 0 calc(10px * var(--animation-intensity)) #c2440050} 50%{box-shadow:0 0 calc(20px * var(--animation-intensity)) #c2440080,0 0 calc(30px * var(--animation-intensity)) #c2440060} }
     .paradise-mute-bounce { animation: paradise-mute-bounce 1.4s ease-in-out infinite; }
-    .paradise-player-container * { transition: all .4s cubic-bezier(.25,.46,.45,.94); }
+    .paradise-player-container * { transition: all .3s cubic-bezier(.4,0,.2,1); }
 
     /* ============================================================
        TICKER STRIP
@@ -795,30 +795,26 @@
       </div>
     </div>
 
-    <!-- Hero Video -->
-    <div class="hero__video-section">
+    <!-- VSL -->
+    <div class="hero__vsl">
       <div class="container">
-        <div class="hero__video-label">Assista e entenda como protegemos sua empresa</div>
-
-        <div id="paradisePlayer_1773836581618Container" class="paradise-player-container" style="position:relative;width:100%;max-width:800px;margin:0 auto;">
-          <div id="paradisePlayer_1773836581618Wrapper" style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:17px;overflow:hidden;box-shadow:0 0 20px #ff7b0050,0 0 5px #ff7b0080;">
+        <div class="hero__vsl-label">Assista e entenda como protegemos sua empresa</div>
+        <div id="paradisePlayer_1773842475453Container" class="paradise-player-container" style="position:relative;width:100%;max-width:800px;margin:20px auto;">
+          <div id="paradisePlayer_1773842475453Wrapper" style="position:relative;width:100%;padding-bottom:56.25%;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.3);">
             <video
-              id="paradisePlayer_1773836581618"
+              id="paradisePlayer_1773842475453"
               style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;cursor:pointer;"
-              playsinline
-              webkit-playsinline
-              preload="auto"
+              playsinline webkit-playsinline preload="auto"
               oncontextmenu="return false;"
             >
-              <source src="https://www.pexels.com/pt-br/video/36623289/" type="video/mp4">
+              <source src="https://ia601400.us.archive.org/1/items/assis-eventos/Assis%20Eventos.mp4" type="video/mp4">
               Seu navegador não suporta vídeos HTML5.
             </video>
-
-            <div id="paradisePlayer_1773836581618MuteOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:#00000000;cursor:pointer;z-index:20;backdrop-filter:blur(2px);">
-              <div id="paradisePlayer_1773836581618MuteButton" class="paradise-mute-bounce" style="background:#ff7b00;padding:clamp(.96rem,5vw,1.6rem) clamp(1.2rem,7vw,2.4rem);border-radius:12px;text-align:center;color:#fff;--animation-intensity:0.5;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:90vw;box-sizing:border-box;">
-                <div style="font-size:clamp(.72rem,2.5vw,.88rem);font-weight:700;margin-bottom:.4rem;font-family:'Sora',sans-serif;">Seu vídeo já começou!</div>
-                <div style="margin-bottom:.48rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Unmute" style="width:clamp(2rem,8vw,2.8rem);height:clamp(2rem,8vw,2.8rem);filter:brightness(0) invert(1);display:inline-block;"></div>
-                <div style="font-size:clamp(.64rem,2.2vw,.8rem);font-weight:500;opacity:.95;font-family:'Sora',sans-serif;">Clique para ativar o som</div>
+            <div id="paradisePlayer_1773842475453MuteOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:#00000000;cursor:pointer;z-index:20;backdrop-filter:blur(2px);">
+              <div id="paradisePlayer_1773842475453MuteButton" class="paradise-mute-bounce" style="background:#c24400;padding:clamp(.84rem,5vw,1.4rem) clamp(1.05rem,7vw,2.1rem);border-radius:12px;text-align:center;color:#fff;--animation-intensity:1;box-shadow:0 8px 25px rgba(0,0,0,.3);max-width:90vw;box-sizing:border-box;">
+                <div style="font-size:clamp(.63rem,2.5vw,.77rem);font-weight:700;margin-bottom:.35rem;font-family:'Sora',sans-serif;">Seu vídeo já começou!</div>
+                <div style="margin-bottom:.42rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Unmute" style="width:clamp(1.75rem,8vw,2.45rem);height:clamp(1.75rem,8vw,2.45rem);filter:brightness(0) invert(1);display:inline-block;"></div>
+                <div style="font-size:clamp(.56rem,2.2vw,.7rem);font-weight:500;opacity:.95;font-family:'Sora',sans-serif;">Clique para ativar o som</div>
               </div>
             </div>
           </div>
@@ -1521,11 +1517,11 @@
 
   <script>
   (function() {
-    const video       = document.getElementById('paradisePlayer_1773836581618');
-    const muteOverlay = document.getElementById('paradisePlayer_1773836581618MuteOverlay');
-    if (!video) { console.error('Paradise Player: Video element #paradisePlayer_1773836581618 not found.'); return; }
+    const video       = document.getElementById('paradisePlayer_1773842475453');
+    const muteOverlay = document.getElementById('paradisePlayer_1773842475453MuteOverlay');
+    if (!video) return;
 
-    video.addEventListener('click', () => { video.paused ? video.play() : video.pause(); });
+    video.addEventListener('click', () => { if (video.paused) video.play(); else video.pause(); });
 
     video.playbackRate = 1;
     video.muted = true;
@@ -1533,21 +1529,36 @@
     if (p !== undefined) p.catch(() => {});
 
     if (muteOverlay) {
-      const unmuteHandler = () => {
+      const unmuteHandler = (e) => {
+        e.preventDefault(); e.stopPropagation();
+        video.pause();
         video.muted = false;
+        video.volume = 1;
         video.currentTime = 0;
-        video.play();
-        muteOverlay.style.opacity = '0';
-        setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+        const pp = video.play();
+        if (pp !== undefined) {
+          pp.then(() => {
+            muteOverlay.style.opacity = '0';
+            setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+          }).catch(() => {
+            video.muted = false; video.volume = 1;
+            muteOverlay.style.opacity = '0';
+            setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+          });
+        } else {
+          muteOverlay.style.opacity = '0';
+          setTimeout(() => { muteOverlay.style.display = 'none'; }, 300);
+        }
         if (window.paradiseTracker && window.paradiseTracker.send) {
           window.paradiseTracker.send('unmute');
           window.paradiseTracker.send('play');
         }
       };
       muteOverlay.addEventListener('click',    unmuteHandler, { once: true });
-      muteOverlay.addEventListener('touchend', unmuteHandler, { once: true });
+      muteOverlay.addEventListener('touchend', unmuteHandler, { once: true, passive: false });
     }
   })();
   </script>
+
 </body>
 </html>
