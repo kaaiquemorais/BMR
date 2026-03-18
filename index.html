@@ -160,47 +160,6 @@
       100% { transform:rotate(360deg); }
     }
 
-    /* ============================================================
-       NAVBAR
-    ============================================================ */
-    .navbar {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-      padding: 14px 0;
-      background: rgba(7,18,25,.88);
-      backdrop-filter: blur(16px) saturate(160%);
-      border-bottom: 1px solid rgba(14,184,157,.12);
-      transition: var(--trans);
-    }
-    .navbar.scrolled { padding: 10px 0; box-shadow: 0 4px 24px rgba(0,0,0,.3); }
-    .navbar__inner {
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .navbar__logo img { height: 42px; width: auto; }
-    .navbar__nav {
-      display: flex; align-items: center; gap: 32px;
-    }
-    .navbar__nav a {
-      color: rgba(255,255,255,.75); font-size: .85rem; font-weight: 500;
-      transition: color var(--trans);
-    }
-    .navbar__nav a:hover { color: var(--green); }
-    .navbar__cta { display: flex; align-items: center; gap: 12px; }
-    .navbar__hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer;
-      background: none; border: none; padding: 4px;
-    }
-    .navbar__hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); border-radius: 2px; transition: var(--trans);
-    }
-    .mobile-menu {
-      display: none; position: fixed; top: 72px; left: 0; width: 100%;
-      background: var(--navy); padding: 24px;
-      border-bottom: 1px solid var(--border); z-index: 999;
-      flex-direction: column; gap: 20px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { color: rgba(255,255,255,.8); font-size: 1rem; font-weight: 500; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
 
     /* ============================================================
        HERO
@@ -208,7 +167,6 @@
     .hero {
       position: relative; overflow: hidden;
       background: var(--navy);
-      padding-top: 72px; /* navbar height */
     }
     .hero__image-wrap {
       position: relative; width: 100%;
@@ -231,15 +189,19 @@
       position: absolute; inset: 0;
       display: flex; align-items: center;
     }
+    .hero__mobile-logo { display: none; }
+    .hero__logo-always {
+      display: block; width: 200px !important; height: auto !important; margin-bottom: 14px;
+    }
     .hero__text {
-      max-width: 560px;
+      max-width: 420px;
       animation: fadeUp .9s ease both;
     }
-    .hero__text .badge { margin-bottom: 20px; }
+    .hero__text .badge { margin-bottom: 16px; }
     .hero__headline {
-      font-size: clamp(1.6rem, 3.2vw, 2.8rem);
-      font-weight: 800; line-height: 1.18; letter-spacing: -.03em;
-      color: var(--white); margin-bottom: 18px;
+      font-size: clamp(1.2rem, 2.2vw, 2rem);
+      font-weight: 800; line-height: 1.22; letter-spacing: -.02em;
+      color: var(--white); margin-bottom: 14px;
     }
     .hero__headline em {
       font-style: normal;
@@ -247,9 +209,9 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero__sub {
-      font-size: clamp(.88rem, 1.4vw, 1.05rem);
-      color: rgba(255,255,255,.75); line-height: 1.75; margin-bottom: 32px;
-      max-width: 480px;
+      font-size: clamp(.78rem, 1.1vw, .92rem);
+      color: rgba(255,255,255,.75); line-height: 1.65; margin-bottom: 24px;
+      max-width: 400px;
     }
     .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
     .hero__glow {
@@ -313,9 +275,10 @@
        PROBLEM
     ============================================================ */
     .problem__grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      display: grid; grid-template-columns: 1fr; gap: 40px;
     }
     .risk-list { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .risk-list { text-align: left; }
     .risk-item {
       display: flex; align-items: flex-start; gap: 14px;
       padding: 18px 20px; border-radius: var(--radius-md);
@@ -373,9 +336,10 @@
     /* ============================================================
        ASO
     ============================================================ */
-    .aso__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .aso__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
     .aso__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
     .aso-card {
+      text-align: center;
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--radius-md); padding: 22px;
       box-shadow: var(--shadow-card); transition: var(--trans);
@@ -403,21 +367,18 @@
       background: linear-gradient(0deg, rgba(7,18,25,.6) 0%, transparent 60%);
       border-radius: var(--radius-lg);
     }
-    .training-list { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
-    .training-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 16px 20px; border-radius: var(--radius-md);
-      background: var(--bg-soft); border: 1px solid var(--border);
-      transition: var(--trans);
+    .training__banner { margin-top: 40px; display: flex; justify-content: center; }
+    .training__banner img { width: 60%; height: auto; display: block; border-radius: var(--radius-lg); }
+    .nr-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .nr-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 7px 14px; border-radius: 999px;
+      background: var(--green-dim); border: 1px solid rgba(14,184,157,.25);
+      font-size: .82rem; color: var(--slate); transition: var(--trans);
     }
-    .training-item:hover { background: var(--green-dim); border-color: var(--green); }
-    .training-item__check {
-      width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: .7rem; font-weight: 800;
-    }
-    .training-item__text { font-size: .9rem; font-weight: 500; color: var(--slate); }
+    .nr-tag strong { color: var(--green); font-weight: 700; }
+    .nr-tag:hover { background: var(--green-dim); border-color: var(--green); }
+    .nr-tag--more { background: transparent; border-style: dashed; color: var(--muted); font-style: italic; }
 
     /* ============================================================
        BENEFITS
@@ -456,15 +417,12 @@
       transition: var(--trans); position: relative; overflow: hidden;
     }
     .diff-card:hover { background: rgba(14,184,157,.08); box-shadow: var(--green-glow); }
-    .diff-card__num {
-      position: absolute; top: 20px; right: 24px;
-      font-size: 4rem; font-weight: 800; color: rgba(14,184,157,.08); line-height: 1;
-    }
     .diff-card__icon {
       width: 52px; height: 52px; border-radius: var(--radius-md);
       background: var(--green-dim); display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
     }
+    .diff-card { text-align: center; }
     .diff-card__title { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
     .diff-card__text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; }
 
@@ -663,23 +621,19 @@
        RESPONSIVE
     ============================================================ */
     @media (max-width: 900px) {
-      .problem__grid,
-      .aso__grid,
       .training__grid { grid-template-columns: 1fr; gap: 40px; }
-      .problem__img-wrap { order: -1; }
-      .training__img { order: -1; }
       .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .process__steps::before { display: none; }
     }
     @media (max-width: 700px) {
-      .navbar__nav, .navbar__cta .btn:not(.btn-primary) { display: none; }
-      .navbar__hamburger { display: flex; }
       /* Hero mobile */
-      .hero__content { align-items: flex-end; padding-bottom: 28px; }
-      .hero__text { max-width: 100%; text-align: center; }
-      .hero__sub { max-width: 100%; }
+      .hero__content { align-items: flex-start; padding-top: 20px; padding-bottom: 0; justify-content: center; }
+      .hero__text { max-width: 90%; text-align: center; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+      .hero__headline { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+      .hero__sub { font-size: .78rem; max-width: 100%; margin-bottom: 16px; }
+      .hero__logo-always { width: 160px !important; height: auto !important; margin: 0 auto 14px; }
       .hero__actions { flex-direction: column; }
-      .hero__actions .btn { width: 100%; }
+      .hero__actions .btn { width: 100%; font-size: .82rem; padding: 10px 16px; }
       .hero__glow { display: none; }
       .aso__cards { grid-template-columns: 1fr; }
       .footer__grid { grid-template-columns: 1fr; }
@@ -691,51 +645,15 @@
 </head>
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <div class="navbar__inner">
-        <a href="#" class="navbar__logo">
-          <img src="https://i.postimg.cc/5yL8B4kZ/logo-bmr.png" alt="BMR Saúde e Segurança Ocupacional" />
-        </a>
-        <ul class="navbar__nav">
-          <li><a href="#solucoes">Soluções</a></li>
-          <li><a href="#aso">ASO</a></li>
-          <li><a href="#treinamentos">Treinamentos</a></li>
-          <li><a href="#processo">Como Funciona</a></li>
-          <li><a href="#unidades">Unidades</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-        <div class="navbar__cta">
-          <a href="tel:+551134044187" class="btn btn-outline" style="padding:10px 20px;font-size:.82rem;">(11) 3404-4187</a>
-          <a href="#cta-final" class="btn btn-primary" style="padding:10px 20px;font-size:.82rem;">Diagnóstico Gratuito</a>
-        </div>
-        <button class="navbar__hamburger" id="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#solucoes">Soluções</a>
-    <a href="#aso">ASO</a>
-    <a href="#treinamentos">Treinamentos</a>
-    <a href="#processo">Como Funciona</a>
-    <a href="#unidades">Unidades</a>
-    <a href="#faq">FAQ</a>
-    <a href="#cta-final" class="btn btn-primary btn-full" style="margin-top:8px;">Diagnóstico Gratuito</a>
-  </div>
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
     <div class="hero__image-wrap">
       <!-- Desktop image -->
       <picture>
-        <source media="(max-width: 700px)" srcset="https://i.postimg.cc/Wbp46pKS/hero-bmr-mobile.png" />
+        <source media="(max-width: 700px)" srcset="https://i.postimg.cc/6pFBC6jy/bmr-mobbb.png" />
         <img
-          src="https://i.postimg.cc/W3M4Sdsc/hero-bmr-desk.png"
+          src="https://i.postimg.cc/qqvwJrdD/bmr-desk.png"
           alt="BMR Saúde e Segurança Ocupacional — Equipe profissional"
         />
       </picture>
@@ -745,24 +663,17 @@
       <div class="hero__content">
         <div class="container">
           <div class="hero__text">
-            <div class="badge">
-              <span>Saúde &amp; Segurança Ocupacional</span>
-            </div>
+            <img src="https://i.postimg.cc/Y9hNZ3Nz/bmr-white.png" alt="BMR" class="hero__logo-always" />
             <h1 class="hero__headline">
-              Regularize sua empresa em SST com<br />
-              <em>rapidez, tecnologia</em> e total<br />conformidade legal
+              Mais segurança.<br />Mais produtividade.<br /><em>Menos riscos.</em>
             </h1>
             <p class="hero__sub">
-              Gestão completa de SST, emissão de ASOs e treinamentos obrigatórios para empresas que desejam evitar multas, processos trabalhistas e riscos operacionais.
+              Exames ocupacionais, laudos, programas legais e acompanhamento especializado para manter sua empresa sempre em conformidade.
             </p>
             <div class="hero__actions">
               <a href="#cta-final" class="btn btn-primary btn-lg">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                Solicitar Diagnóstico Gratuito
-              </a>
-              <a href="https://wa.me/5511945161222" target="_blank" class="btn btn-outline btn-lg">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Falar com um Especialista
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Agendar Atendimento
               </a>
             </div>
           </div>
@@ -811,10 +722,10 @@
   <section class="section section--soft">
     <div class="container">
       <div class="problem__grid">
-        <div class="reveal-left">
+        <div class="reveal text-center">
           <div class="section-tag">Diagnóstico</div>
           <h2 class="section-title">Sua empresa está preparada para <span>fiscalizações</span> e exigências legais?</h2>
-          <div class="divider"></div>
+          <div class="divider divider--center"></div>
           <p class="section-subtitle">
             A ausência de uma gestão eficiente de SST expõe sua empresa a riscos severos que comprometem a operação, as finanças e a reputação do negócio.
           </p>
@@ -911,10 +822,10 @@
   <section class="section" id="aso">
     <div class="container">
       <div class="aso__grid">
-        <div class="reveal-left">
+        <div class="reveal text-center">
           <div class="section-tag">Medicina Ocupacional</div>
           <h2 class="section-title">Atestados de Saúde <span>Ocupacional</span></h2>
-          <div class="divider"></div>
+          <div class="divider divider--center"></div>
           <p class="section-subtitle">
             Agilidade, precisão e total conformidade na emissão de ASOs para todas as etapas da jornada do colaborador na sua empresa.
           </p>
@@ -959,48 +870,14 @@
   <!-- ===================== TRAINING ===================== -->
   <section class="section section--soft" id="treinamentos">
     <div class="container">
-      <div class="training__grid">
-        <div class="training__img reveal-left">
-          <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop"
-            alt="Treinamento com EPI e segurança do trabalho"
-          />
-          <div class="training__img-overlay"></div>
-        </div>
-        <div class="reveal-right">
-          <div class="section-tag">Capacitação Profissional</div>
-          <h2 class="section-title">Treinamentos que <span>protegem</span> sua equipe e sua empresa</h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">
-            Capacitações obrigatórias e complementares realizadas por profissionais especializados, com emissão de certificados e controle de vencimento.
-          </p>
-          <div class="training-list">
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">NR-06 — Uso correto de EPIs e equipamentos de proteção individual</div>
-            </div>
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">NR-10 — Segurança em instalações e serviços em eletricidade</div>
-            </div>
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">NR-35 — Trabalho em altura, prevenção e controle de riscos</div>
-            </div>
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">Primeiros Socorros e atendimento emergencial no ambiente de trabalho</div>
-            </div>
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">CIPA — Comissão Interna de Prevenção de Acidentes (NR-05)</div>
-            </div>
-            <div class="training-item">
-              <div class="training-item__check">✓</div>
-              <div class="training-item__text">Brigada de Incêndio e planos de emergência e evacuação</div>
-            </div>
-          </div>
-        </div>
+      <div class="text-center reveal">
+        <div class="section-tag">Capacitação Profissional</div>
+        <h2 class="section-title">Treinamentos que <span>protegem</span> sua equipe e sua empresa</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Capacitações obrigatórias e complementares realizadas por profissionais especializados, com emissão de certificados e controle de vencimento.</p>
+      </div>
+      <div class="training__banner reveal">
+        <img src="https://i.postimg.cc/0NQMtNPQ/bmr-nr-23.png" alt="Treinamentos NR BMR" />
       </div>
     </div>
   </section>
@@ -1040,6 +917,21 @@
           <div class="benefit-card__title">Mais Produtividade</div>
           <div class="benefit-card__text">Equipes mais seguras, motivadas e saudáveis geram melhores resultados e menos absenteísmo.</div>
         </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="benefit-card__title">Economia de Tempo</div>
+          <div class="benefit-card__text">Elimine horas perdidas com burocracia e gestão manual. Nossa equipe cuida de tudo para você focar no seu negócio.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="benefit-card__title">Reputação Elevada</div>
+          <div class="benefit-card__text">Empresas em conformidade com SST conquistam maior credibilidade no mercado, facilitando contratos e parcerias.</div>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="benefit-card__title">Redução de Custos</div>
+          <div class="benefit-card__text">Prevenção de acidentes e multas trabalhistas gera economia significativa e previsibilidade financeira para a empresa.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1049,31 +941,27 @@
     <div class="container">
       <div class="text-center reveal">
         <div class="section-tag">Nossos Diferenciais</div>
-        <h2 class="section-title">Por que escolher <span>a BMR?</span></h2>
+        <h2 class="section-title">Por que escolher a <span>BMR?</span></h2>
         <div class="divider divider--center"></div>
         <p class="section-subtitle">Mais de uma década de experiência, tecnologia de ponta e um time dedicado a manter sua empresa sempre em conformidade.</p>
       </div>
       <div class="diff__grid">
         <div class="diff-card reveal">
-          <div class="diff-card__num">01</div>
           <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div class="diff-card__title">Atendimento Especializado</div>
           <div class="diff-card__text">Equipe multidisciplinar com médicos do trabalho, engenheiros de segurança e técnicos especializados prontos para atender cada necessidade da sua empresa.</div>
         </div>
         <div class="diff-card reveal">
-          <div class="diff-card__num">02</div>
           <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <div class="diff-card__title">Agilidade nos Processos</div>
           <div class="diff-card__text">Processos otimizados e digitalização completa garantem a entrega rápida de documentos, laudos e ASOs sem burocracia excessiva.</div>
         </div>
         <div class="diff-card reveal">
-          <div class="diff-card__num">03</div>
           <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
           <div class="diff-card__title">Suporte Técnico Dedicado</div>
           <div class="diff-card__text">Canal exclusivo de atendimento com consultores especializados para tirar dúvidas e orientar sua empresa em tempo real.</div>
         </div>
         <div class="diff-card reveal">
-          <div class="diff-card__num">04</div>
           <div class="diff-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
           <div class="diff-card__title">Gestão Completa e Integrada</div>
           <div class="diff-card__text">Da elaboração de laudos ao envio automático ao eSocial, gerenciamos todo o ciclo de SST da sua empresa em um único parceiro.</div>
@@ -1093,34 +981,31 @@
       <div class="testimonials__grid">
         <div class="testi-card reveal">
           <div class="testi-card__stars">★★★★★</div>
-          <p class="testi-card__quote">"A BMR transformou nossa gestão de SST. Antes tínhamos documentação desatualizada e medo de fiscalizações. Hoje operamos com total tranquilidade e conformidade."</p>
+          <p class="testi-card__quote">"Profissionais capacitados e muito atenciosos, espaço físico adequado, ótimo atendimento!"</p>
           <div class="testi-card__author">
-            <div class="testi-card__avatar">RM</div>
+            <div class="testi-card__avatar">CC</div>
             <div>
-              <div class="testi-card__name">Ricardo Mendes</div>
-              <div class="testi-card__role">Diretor de RH — Metalúrgica Industrial</div>
+              <div class="testi-card__name">Carolina Campos</div>
             </div>
           </div>
         </div>
         <div class="testi-card reveal">
           <div class="testi-card__stars">★★★★★</div>
-          <p class="testi-card__quote">"Profissionalismo e agilidade excepcionais. Os ASOs admissionais são emitidos no mesmo dia e a integração com o eSocial nos poupou horas de trabalho manual toda semana."</p>
+          <p class="testi-card__quote">"Atendimento excelente! Equipe especializada."</p>
           <div class="testi-card__author">
-            <div class="testi-card__avatar">CA</div>
+            <div class="testi-card__avatar">MM</div>
             <div>
-              <div class="testi-card__name">Carla Andrade</div>
-              <div class="testi-card__role">Gerente Administrativa — Distribuidora Regional</div>
+              <div class="testi-card__name">Michele Melo</div>
             </div>
           </div>
         </div>
         <div class="testi-card reveal">
           <div class="testi-card__stars">★★★★★</div>
-          <p class="testi-card__quote">"Depois de uma autuação do MTE, buscamos a BMR e a mudança foi completa. Em três meses estávamos totalmente regularizados. Recomendo a todas as empresas."</p>
+          <p class="testi-card__quote">"Atendimento e local qualificado e quantificado positivamente."</p>
           <div class="testi-card__author">
-            <div class="testi-card__avatar">PS</div>
+            <div class="testi-card__avatar">CL</div>
             <div>
-              <div class="testi-card__name">Paulo Silva</div>
-              <div class="testi-card__role">CEO — Construtora Alphaville</div>
+              <div class="testi-card__name">Cristiano Latorre</div>
             </div>
           </div>
         </div>
@@ -1193,10 +1078,6 @@
             Vila Municipal<br />
             Bragança Paulista — SP
           </div>
-          <a href="tel:+551134044187" class="unit-card__phone">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            (11) 3404-4187
-          </a>
         </div>
         <div class="unit-card reveal">
           <div class="unit-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -1206,10 +1087,6 @@
             Centro<br />
             Atibaia — SP
           </div>
-          <a href="tel:+5511945161222" class="unit-card__phone">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            (11) 94516-1222
-          </a>
         </div>
       </div>
     </div>
@@ -1297,10 +1174,6 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Solicitar Proposta Personalizada
           </a>
-          <a href="tel:+551134044187" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.5);color:#fff;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h4.08a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.91 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            (11) 3404-4187
-          </a>
         </div>
       </div>
     </div>
@@ -1339,38 +1212,20 @@
           <address>
             <strong style="color:rgba(255,255,255,.85);font-size:.84rem;">Bragança Paulista</strong><br/>
             R. São Paulo, 61 — Vila Municipal<br/>
-            (11) 3404-4187<br/><br/>
             <strong style="color:rgba(255,255,255,.85);font-size:.84rem;">Atibaia</strong><br/>
-            R. São Vicente de Paula, 267 — Centro<br/>
-            (11) 94516-1222
+            R. São Vicente de Paula, 267 — Centro
           </address>
         </div>
       </div>
       <div class="footer__bottom">
         <span>© 2025 BMR Saúde e Segurança Ocupacional. Todos os direitos reservados.</span>
-        <span>CNPJ: 00.000.000/0000-00</span>
+        <span>Bragança Paulista: CNPJ 42.763.434/0001-93 &nbsp;|&nbsp; Atibaia: CNPJ 19.240.550/0001-06</span>
       </div>
     </div>
   </footer>
 
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
-    /* ----- NAVBAR scroll ----- */
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
-
-    /* ----- Hamburger menu ----- */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    });
-
     /* ----- Ticker ----- */
     const benefits = [
       'Redução de riscos trabalhistas',
