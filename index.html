@@ -692,62 +692,6 @@
     </div>
   </div>
 
-  <!-- ===================== VSL ===================== -->
-  <section class="section section--dark" style="padding: 48px 0;">
-    <div class="container">
-      <div class="text-center reveal" style="margin-bottom: 28px;">
-        <div class="section-tag">Assista ao Vídeo</div>
-        <h2 class="section-title">Entenda como a <span>BMR</span> protege sua empresa</h2>
-      </div>
-      <div style="max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,.4);">
-        <div id="paradisePlayer_1773845802126Wrapper" style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000;">
-          <video
-            id="paradisePlayer_1773845802126"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
-            playsinline webkit-playsinline preload="auto"
-            oncontextmenu="return false;">
-            <source src="https://ia902801.us.archive.org/16/items/assis-eventos-mp-4/Assis%20Eventos%20-%20MP4.mp4" type="video/mp4">
-          </video>
-          <div id="paradisePlayer_1773845802126MuteOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: transparent; cursor: pointer; z-index: 20; backdrop-filter: blur(2px);">
-            <div class="paradise-mute-bounce" style="background: #c23a00; padding: clamp(.84rem,5vw,1.4rem) clamp(1.05rem,7vw,2.1rem); border-radius: 12px; text-align: center; color: #fff; --animation-intensity: 1; box-shadow: 0 8px 25px rgba(0,0,0,.3); max-width: 90vw; box-sizing: border-box;">
-              <div style="font-size: clamp(.63rem,2.5vw,.77rem); font-weight: 700; margin-bottom: .35rem;">Seu vídeo já começou!</div>
-              <div style="margin-bottom: .42rem;"><img src="https://i.postimg.cc/2j9d2jbv/R.png" alt="Som" style="width:clamp(1.75rem,8vw,2.45rem); height:clamp(1.75rem,8vw,2.45rem); filter:brightness(0) invert(1); display:inline-block;"></div>
-              <div style="font-size: clamp(.56rem,2.2vw,.7rem); font-weight: 500; opacity: .95;">Clique para ativar o som</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    @keyframes paradise-mute-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(calc(-10px * var(--animation-intensity)))} }
-    .paradise-mute-bounce { animation: paradise-mute-bounce 1.2s ease-in-out infinite; }
-    #paradisePlayer_1773845802126::-webkit-media-controls,
-    #paradisePlayer_1773845802126::-webkit-media-controls-enclosure { display: none !important; }
-  </style>
-
-  <script>
-  (function() {
-    const video = document.getElementById('paradisePlayer_1773845802126');
-    const overlay = document.getElementById('paradisePlayer_1773845802126MuteOverlay');
-    if (!video) return;
-    video.addEventListener('click', () => { video.paused ? video.play() : video.pause(); });
-    video.playbackRate = 1;
-    video.muted = true;
-    const p = video.play(); if (p) p.catch(() => {});
-    if (overlay) {
-      const unmute = () => {
-        video.muted = false; video.currentTime = 0; video.play();
-        overlay.style.opacity = '0';
-        setTimeout(() => { overlay.style.display = 'none'; }, 300);
-      };
-      overlay.addEventListener('click', unmute, { once: true });
-      overlay.addEventListener('touchend', unmute, { once: true });
-    }
-  })();
-  </script>
-
   <!-- ===================== STATS ===================== -->
   <section class="stats">
     <div class="container">
