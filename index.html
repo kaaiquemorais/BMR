@@ -464,9 +464,8 @@
     .testi-card__role { font-size: .78rem; color: var(--muted); }
 
     .sectors-ticker {
-      margin-top: 56px;
       background: linear-gradient(90deg, var(--green-dark) 0%, var(--green) 50%, var(--green-dark) 100%);
-      overflow: hidden; padding: 13px 0; position: relative;
+      overflow: hidden; padding: 13px 0; position: relative; width: 100%;
     }
     .sectors-ticker__track {
       display: flex; width: max-content;
@@ -1037,12 +1036,13 @@
         </div>
       </div>
 
-      <!-- Sectors Ticker -->
-      <div class="sectors-ticker">
-        <div class="sectors-ticker__track" id="sectorsTicker"></div>
-      </div>
     </div>
   </section>
+
+  <!-- Sectors Ticker -->
+  <div class="sectors-ticker">
+    <div class="sectors-ticker__track" id="sectorsTicker"></div>
+  </div>
 
   <!-- ===================== PROCESS ===================== -->
   <section class="section section--dark" id="processo">
