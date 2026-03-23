@@ -383,7 +383,15 @@
     /* ============================================================
        BENEFITS
     ============================================================ */
-    .benefits__outer { margin-top: 48px; }
+    .benefits__header-wrap {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 40px; align-items: center; margin-bottom: 40px;
+    }
+    @media (max-width: 700px) {
+      .benefits__header-wrap { grid-template-columns: 1fr; }
+      .benefits__header-wrap img { width: 60vw !important; margin: 0 auto; }
+    }
+    .benefits__outer { margin-top: 0; }
     .benefits__top-img {
       display: flex; justify-content: center; margin-bottom: 40px;
     }
@@ -905,11 +913,16 @@
   <!-- ===================== BENEFITS ===================== -->
   <section class="section">
     <div class="container">
-      <div class="text-center reveal">
-        <div class="section-tag">Resultados</div>
-        <h2 class="section-title">Resultados que sua empresa <span>pode alcançar</span></h2>
-        <div class="divider divider--center"></div>
-        <p class="section-subtitle">Empresas que contam com gestão profissional de SST operam com mais segurança, eficiência e tranquilidade jurídica.</p>
+      <div class="benefits__header-wrap">
+        <div class="reveal">
+          <div class="section-tag">Resultados</div>
+          <h2 class="section-title">Resultados que sua empresa <span>pode alcançar</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Empresas que contam com gestão profissional de SST operam com mais segurança, eficiência e tranquilidade jurídica.</p>
+        </div>
+        <div class="reveal-right" style="display:flex; align-items:center; justify-content:center;">
+          <img src="https://i.postimg.cc/63qgGLwr/grafico.png" alt="Resultados BMR" class="neon-green" style="width:220px; height:auto;" />
+        </div>
       </div>
       <div class="benefits__outer">
         <div class="benefits__cards-grid">
@@ -953,9 +966,6 @@
             <div class="benefit-card__title">Redução de Custos</div>
             <div class="benefit-card__text">Prevenção de acidentes e multas trabalhistas gera economia significativa e previsibilidade financeira para a empresa.</div>
           </div>
-        </div>
-        <div class="benefits__top-img reveal" style="margin-top: 40px; margin-bottom: 0;">
-          <img src="https://i.postimg.cc/63qgGLwr/grafico.png" alt="Resultados BMR" class="neon-green" />
         </div>
       </div>
     </div>
