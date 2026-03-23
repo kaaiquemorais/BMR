@@ -285,7 +285,8 @@
     }
     @media (max-width: 768px) {
       .problem__head-wrap { grid-template-columns: 1fr; }
-      .problem__grid-img { display: none; }
+      .problem__grid-img { display: flex; justify-content: center; margin-top: 8px; }
+      .problem__grid-img img { width: 200px; }
     }
     .risk-list { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
     .risk-item {
@@ -366,10 +367,6 @@
     .voice-player {
       margin-top: 40px;
       display: flex; flex-direction: column; align-items: center; gap: 16px;
-      padding: 32px 24px;
-      background: linear-gradient(135deg, rgba(14,184,157,.06) 0%, rgba(14,184,157,.12) 100%);
-      border: 1px solid rgba(14,184,157,.25);
-      border-radius: 20px;
     }
     .voice-player__label { font-size: .85rem; font-weight: 600; color: #0eb89d; letter-spacing: .04em; text-transform: uppercase; }
     .voice-player__bars {
