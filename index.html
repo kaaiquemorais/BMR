@@ -428,6 +428,23 @@
     }
     .training__banner { margin-top: 40px; display: flex; justify-content: center; }
     .training__banner img { width: 60%; height: auto; display: block; border-radius: var(--radius-lg); }
+    /* Scroll 3D effect */
+    .scroll3d-wrap {
+      margin-top: 48px;
+      perspective: 1200px;
+      display: flex; justify-content: center;
+    }
+    .scroll3d-card {
+      width: 72%; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.35), 0 0 0 1px rgba(14,184,157,.15);
+      transform: rotateX(22deg) scale(.88);
+      transform-origin: center bottom;
+      will-change: transform;
+    }
+    .scroll3d-card img { width: 100%; height: auto; display: block; border-radius: 18px; }
+    @media (max-width: 700px) {
+      .scroll3d-card { width: 95%; transform: rotateX(16deg) scale(.92); }
+    }
     .nr-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
     .nr-tag {
       display: inline-flex; align-items: center; gap: 5px;
@@ -856,6 +873,11 @@
       padding-top: 24px; display: flex; justify-content: center; align-items: center;
       flex-wrap: wrap; gap: 12px; font-size: .78rem; color: rgba(255,255,255,.35); text-align: center;
     }
+    .footer-br { display: none; }
+    @media (max-width: 700px) {
+      .footer-br { display: block; }
+      .footer__bottom { flex-direction: column; gap: 8px; }
+    }
 
     /* ============================================================
        SCROLL ANIMATIONS
@@ -1231,8 +1253,10 @@
         <div class="divider divider--center"></div>
         <p class="section-subtitle">Capacitações obrigatórias e complementares realizadas por profissionais especializados, com emissão de certificados e controle de vencimento.</p>
       </div>
-      <div class="training__banner reveal">
-        <img src="https://i.postimg.cc/0NQMtNPQ/bmr-nr-23.png" alt="Treinamentos NR BMR" class="neon-green" />
+      <div class="scroll3d-wrap" id="scroll3dWrap">
+        <div class="scroll3d-card" id="scroll3dCard">
+          <img src="https://i.postimg.cc/0NQMtNPQ/bmr-nr-23.png" alt="Treinamentos NR BMR" class="neon-green" />
+        </div>
       </div>
     </div>
   </section>
@@ -1615,8 +1639,8 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2025 BMR Saúde e Segurança Ocupacional. Todos os direitos reservados.</span>
-        <span>Bragança Paulista: CNPJ 42.763.434/0001-93 &nbsp;|&nbsp; Atibaia: CNPJ 19.240.550/0001-06</span>
+        <span>© 2025 BMR Saúde e Segurança Ocupacional.<br class="footer-br"> Todos os direitos reservados.</span>
+        <span>Bragança Paulista: CNPJ 42.763.434/0001-93<br class="footer-br"> Atibaia: CNPJ 19.240.550/0001-06</span>
       </div>
     </div>
   </footer>
@@ -1774,6 +1798,24 @@
         }
       });
     });
+
+    /* ----- 3D Scroll Card ----- */
+    (function () {
+      const wrap = document.getElementById('scroll3dWrap');
+      const card = document.getElementById('scroll3dCard');
+      if (!wrap || !card) return;
+      function update() {
+        const rect = wrap.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // progress: 0 when bottom of viewport touches element, 1 when element fully in view
+        const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.85)));
+        const rotateX = 22 - progress * 22;
+        const scale   = 0.88 + progress * 0.12;
+        card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
 
     /* ----- Smooth anchor scroll with offset ----- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
