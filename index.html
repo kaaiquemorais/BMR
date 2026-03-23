@@ -1019,6 +1019,104 @@
     </div>
   </section>
 
+  <!-- ===================== INTEGRATION HUB ===================== -->
+  <section class="section section--dark" id="integracao" style="overflow:hidden;">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Plataforma Integrada</div>
+        <h2 class="section-title">Toda a gestão de SST <span>conectada</span> em um só lugar</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">Documentos, exames, laudos e envios ao eSocial gerenciados de forma centralizada pela BMR.</p>
+      </div>
+
+      <!-- Hub component -->
+      <div class="dbhub reveal" id="dbHub">
+
+        <!-- Left nodes -->
+        <div class="dbhub__col dbhub__col--left">
+          <div class="dbhub__item" id="dbN0">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">ASO</span>
+              <span class="dbhub__desc">Atestado de Saúde Ocupacional</span>
+            </div>
+          </div>
+          <div class="dbhub__item" id="dbN1">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">CAT</span>
+              <span class="dbhub__desc">Comunicação de Acidente de Trabalho</span>
+            </div>
+          </div>
+          <div class="dbhub__item" id="dbN2">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">OS</span>
+              <span class="dbhub__desc">Ordem de Serviço de Segurança</span>
+            </div>
+          </div>
+          <div class="dbhub__item" id="dbN3">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">APR</span>
+              <span class="dbhub__desc">Análise Preliminar de Risco</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SVG canvas -->
+        <svg class="dbhub__svg" id="dbSvg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="dbGlow">
+              <feGaussianBlur stdDeviation="2.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="beamL" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0eb89d" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#0eb89d" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#0eb89d" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Center hub -->
+        <div class="dbhub__center" id="dbCenter">
+          <div class="dbhub__center-ring dbhub__center-ring--1"></div>
+          <div class="dbhub__center-ring dbhub__center-ring--2"></div>
+          <div class="dbhub__center-core">
+            <img src="https://i.postimg.cc/SK5Vy3xt/logo-bmr.png" alt="BMR" style="width:44px;height:auto;filter:brightness(0) invert(1);display:block;" />
+            <span style="color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;margin-top:4px;">BMR</span>
+          </div>
+        </div>
+
+        <!-- Right nodes -->
+        <div class="dbhub__col dbhub__col--right">
+          <div class="dbhub__item dbhub__item--right" id="dbN4">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">PT</span>
+              <span class="dbhub__desc">Permissão de Trabalho</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN5">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">FISPQ</span>
+              <span class="dbhub__desc">Ficha de Informação de Produto</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN6">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">eSocial</span>
+              <span class="dbhub__desc">Escrituração Digital SST</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN7">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">SST</span>
+              <span class="dbhub__desc">Saúde e Segurança do Trabalho</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dbhub -->
+    </div>
+  </section>
+
   <!-- ===================== ASO ===================== -->
   <section class="section" id="aso">
     <div class="container">
@@ -1175,104 +1273,6 @@
           <div class="diff-card__text">Da elaboração de laudos ao envio automático ao eSocial, gerenciamos todo o ciclo de SST da sua empresa em um único parceiro.</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== INTEGRATION HUB ===================== -->
-  <section class="section section--dark" id="integracao" style="overflow:hidden;">
-    <div class="container">
-      <div class="text-center reveal">
-        <div class="section-tag">Plataforma Integrada</div>
-        <h2 class="section-title">Toda a gestão de SST <span>conectada</span> em um só lugar</h2>
-        <div class="divider divider--center"></div>
-        <p class="section-subtitle">Documentos, exames, laudos e envios ao eSocial gerenciados de forma centralizada pela BMR.</p>
-      </div>
-
-      <!-- Hub component -->
-      <div class="dbhub reveal" id="dbHub">
-
-        <!-- Left nodes -->
-        <div class="dbhub__col dbhub__col--left">
-          <div class="dbhub__item" id="dbN0">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">ASO</span>
-              <span class="dbhub__desc">Atestado de Saúde Ocupacional</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN1">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">CAT</span>
-              <span class="dbhub__desc">Comunicação de Acidente de Trabalho</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN2">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">OS</span>
-              <span class="dbhub__desc">Ordem de Serviço de Segurança</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN3">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">APR</span>
-              <span class="dbhub__desc">Análise Preliminar de Risco</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SVG canvas -->
-        <svg class="dbhub__svg" id="dbSvg" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="dbGlow">
-              <feGaussianBlur stdDeviation="2.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <linearGradient id="beamL" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#0eb89d" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#0eb89d" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#0eb89d" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <!-- Center hub -->
-        <div class="dbhub__center" id="dbCenter">
-          <div class="dbhub__center-ring dbhub__center-ring--1"></div>
-          <div class="dbhub__center-ring dbhub__center-ring--2"></div>
-          <div class="dbhub__center-core">
-            <img src="https://i.postimg.cc/SK5Vy3xt/logo-bmr.png" alt="BMR" style="width:44px;height:auto;filter:brightness(0) invert(1);display:block;" />
-            <span style="color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;margin-top:4px;">BMR</span>
-          </div>
-        </div>
-
-        <!-- Right nodes -->
-        <div class="dbhub__col dbhub__col--right">
-          <div class="dbhub__item dbhub__item--right" id="dbN4">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">PT</span>
-              <span class="dbhub__desc">Permissão de Trabalho</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN5">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">FISPQ</span>
-              <span class="dbhub__desc">Ficha de Informação de Produto</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN6">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">eSocial</span>
-              <span class="dbhub__desc">Escrituração Digital SST</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN7">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">SST</span>
-              <span class="dbhub__desc">Saúde e Segurança do Trabalho</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /dbhub -->
     </div>
   </section>
 
