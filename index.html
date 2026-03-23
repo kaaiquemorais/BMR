@@ -516,6 +516,7 @@
     ============================================================ */
     .dbhub {
       position: relative; width: 100%; height: 460px; margin-top: 16px;
+      --hub-r: 180px;
     }
     .dbhub__svg {
       position: absolute; inset: 0; width: 100%; height: 100%;
@@ -523,8 +524,8 @@
     }
     .dbhub__sigla-pin {
       position: absolute;
-      left: calc(50% + var(--px, 0px));
-      top:  calc(50% + var(--py, 0px));
+      left: calc(50% + var(--nx) * var(--hub-r));
+      top:  calc(50% + var(--ny) * var(--hub-r));
       transform: translate(-50%, -50%);
       font-size: .8rem; font-weight: 800; color: var(--green);
       background: rgba(14,184,157,.1); border: 1px solid rgba(14,184,157,.35);
@@ -552,9 +553,8 @@
       box-shadow: 0 0 0 1px rgba(14,184,157,.3), 0 0 40px rgba(14,184,157,.5), 0 0 80px rgba(14,184,157,.2);
     }
     @media (max-width: 700px) {
-      .dbhub { height: 300px; }
-      .dbhub__sigla-pin { font-size: .68rem; padding: 4px 9px; --px: calc(var(--px-m, 0px)); --py: calc(var(--py-m, 0px)); }
-      .dbhub__svg { display: none; }
+      .dbhub { height: 310px; --hub-r: 108px; }
+      .dbhub__sigla-pin { font-size: .68rem; padding: 4px 9px; }
     }
 
     /* ============================================================
@@ -1026,15 +1026,15 @@
             <img src="https://i.postimg.cc/SK5Vy3xt/logo-bmr.png" alt="BMR" style="width:48px;height:auto;filter:brightness(0) invert(1);display:block;" />
           </div>
         </div>
-        <!-- Siglas orbiting center — radius 180px, 45° apart -->
-        <div class="dbhub__sigla-pin" id="dbN0" style="--px:180px;--py:0px">eSocial</div>
-        <div class="dbhub__sigla-pin" id="dbN1" style="--px:127px;--py:127px">PPP</div>
-        <div class="dbhub__sigla-pin" id="dbN2" style="--px:0px;--py:180px">LTCAT</div>
-        <div class="dbhub__sigla-pin" id="dbN3" style="--px:-127px;--py:127px">LIP</div>
-        <div class="dbhub__sigla-pin" id="dbN4" style="--px:-180px;--py:0px">NRs</div>
-        <div class="dbhub__sigla-pin" id="dbN5" style="--px:-127px;--py:-127px">ASO</div>
-        <div class="dbhub__sigla-pin" id="dbN6" style="--px:0px;--py:-180px">PGR</div>
-        <div class="dbhub__sigla-pin" id="dbN7" style="--px:127px;--py:-127px">PCMSO</div>
+        <!-- Siglas orbiting center — unitless nx/ny, radius controlled by --hub-r -->
+        <div class="dbhub__sigla-pin" id="dbN0" style="--nx:1;--ny:0">eSocial</div>
+        <div class="dbhub__sigla-pin" id="dbN1" style="--nx:0.707;--ny:0.707">PPP</div>
+        <div class="dbhub__sigla-pin" id="dbN2" style="--nx:0;--ny:1">LTCAT</div>
+        <div class="dbhub__sigla-pin" id="dbN3" style="--nx:-0.707;--ny:0.707">LIP</div>
+        <div class="dbhub__sigla-pin" id="dbN4" style="--nx:-1;--ny:0">NRs</div>
+        <div class="dbhub__sigla-pin" id="dbN5" style="--nx:-0.707;--ny:-0.707">ASO</div>
+        <div class="dbhub__sigla-pin" id="dbN6" style="--nx:0;--ny:-1">PGR</div>
+        <div class="dbhub__sigla-pin" id="dbN7" style="--nx:0.707;--ny:-0.707">PCMSO</div>
       </div><!-- /dbhub -->
     </div>
   </section>
@@ -1484,7 +1484,7 @@
       const svg = document.getElementById('dbSvg');
       const hub = document.getElementById('dbHub');
       const center = document.getElementById('dbCenter');
-      if (!svg || !hub || !center || window.innerWidth <= 700) return;
+      if (!svg || !hub || !center) return;
 
       // Remove only dynamic elements (paths + animated circles), keep defs
       svg.querySelectorAll('.db-beam, .db-dot').forEach(el => el.remove());
