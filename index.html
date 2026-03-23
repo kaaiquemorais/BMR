@@ -367,6 +367,18 @@
       background: linear-gradient(0deg, rgba(7,18,25,.6) 0%, transparent 60%);
       border-radius: var(--radius-lg);
     }
+    /* Float side image layout */
+    .float-section { display: grid; gap: 56px; align-items: center; margin-top: 48px; }
+    .float-section--right { grid-template-columns: 1fr auto; }
+    .float-section--left  { grid-template-columns: auto 1fr; }
+    .float-section__img { display: flex; align-items: center; justify-content: center; }
+    .float-section__img img { width: 260px; height: auto; }
+    @media (max-width: 900px) {
+      .float-section--right,
+      .float-section--left { grid-template-columns: 1fr; }
+      .float-section--left .float-section__img { order: -1; }
+      .float-section__img img { width: 75vw; max-width: 280px; }
+    }
     .training__banner { margin-top: 40px; display: flex; justify-content: center; }
     .training__banner img { width: 60%; height: auto; display: block; border-radius: var(--radius-lg); }
     .nr-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
@@ -745,7 +757,7 @@
   <!-- ===================== PROBLEM ===================== -->
   <section class="section section--soft">
     <div class="container">
-      <div class="problem__grid">
+      <div class="float-section float-section--right">
         <div class="reveal text-center">
           <div class="section-tag">Diagnóstico</div>
           <h2 class="section-title">Sua empresa está preparada para <span>fiscalizações</span> e exigências legais?</h2>
@@ -784,7 +796,7 @@
             </div>
           </div>
         </div>
-        <div class="problem__img-wrap reveal-right">
+        <div class="float-section__img reveal-right">
           <img src="https://i.postimg.cc/Y0m65jfc/bmrx.png" alt="Riscos trabalhistas" class="neon-green" />
         </div>
       </div>
@@ -800,7 +812,8 @@
         <div class="divider divider--center"></div>
         <p class="section-subtitle">Uma plataforma completa de serviços para manter sua empresa sempre em dia com todas as obrigações legais.</p>
       </div>
-      <div class="solutions__grid">
+      <div class="float-section float-section--right">
+        <div class="solutions__grid">
         <div class="sol-card reveal">
           <div class="sol-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></div>
           <div class="sol-card__title">PCMSO — Programa de Controle Médico</div>
@@ -831,9 +844,10 @@
           <div class="sol-card__title">Consultoria e Laudos Técnicos</div>
           <div class="sol-card__text">Elaboração de LIP, LTCAT, PPP e demais laudos exigidos pela legislação trabalhista e previdenciária.</div>
         </div>
-      </div>
-      <div class="text-center reveal" style="margin-top: 48px;">
-        <img src="https://i.postimg.cc/2SQnGJrD/bmrxxx.png" alt="BMR Soluções SST" class="neon-green" style="max-width: 600px; width: 100%; height: auto; border-radius: var(--radius-lg);" />
+        </div>
+        <div class="float-section__img reveal-right">
+          <img src="https://i.postimg.cc/2SQnGJrD/bmrxxx.png" alt="BMR Soluções SST" class="neon-green" />
+        </div>
       </div>
     </div>
   </section>
@@ -841,7 +855,7 @@
   <!-- ===================== ASO ===================== -->
   <section class="section" id="aso">
     <div class="container">
-      <div class="aso__grid">
+      <div class="float-section float-section--right">
         <div class="reveal text-center">
           <div class="section-tag">Medicina Ocupacional</div>
           <h2 class="section-title">Atestados de Saúde <span>Ocupacional</span></h2>
@@ -877,11 +891,8 @@
             </div>
           </div>
         </div>
-        <div class="aso__img reveal-right">
-          <img
-            src="https://i.postimg.cc/440MRKt3/bmrbpm.png"
-            alt="Atendimento médico ocupacional"
-          />
+        <div class="float-section__img reveal-right">
+          <img src="https://i.postimg.cc/440MRKt3/bmrbpm.png" alt="Atendimento médico ocupacional" class="neon-green" />
         </div>
       </div>
     </div>
@@ -896,8 +907,11 @@
         <div class="divider divider--center"></div>
         <p class="section-subtitle">Capacitações obrigatórias e complementares realizadas por profissionais especializados, com emissão de certificados e controle de vencimento.</p>
       </div>
-      <div class="training__banner reveal">
-        <img src="https://i.postimg.cc/0NQMtNPQ/bmr-nr-23.png" alt="Treinamentos NR BMR" class="neon-green" />
+      <div class="float-section float-section--left" style="margin-top: 48px;">
+        <div class="float-section__img reveal-left">
+          <img src="https://i.postimg.cc/0NQMtNPQ/bmr-nr-23.png" alt="Treinamentos NR BMR" class="neon-green" />
+        </div>
+        <div></div>
       </div>
     </div>
   </section>
@@ -954,9 +968,12 @@
             <div class="benefit-card__text">Prevenção de acidentes e multas trabalhistas gera economia significativa e previsibilidade financeira para a empresa.</div>
           </div>
         </div>
-        <div class="benefits__top-img reveal" style="margin-top: 40px; margin-bottom: 0;">
+      </div>
+      <div class="float-section float-section--left" style="margin-top: 40px;">
+        <div class="float-section__img reveal-left">
           <img src="https://i.postimg.cc/63qgGLwr/grafico.png" alt="Resultados BMR" class="neon-green" />
         </div>
+        <div></div>
       </div>
     </div>
   </section>
