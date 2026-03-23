@@ -515,35 +515,28 @@
        INTEGRATION HUB (database-with-rest-api style)
     ============================================================ */
     .dbhub {
-      position: relative; display: grid;
-      grid-template-columns: 1fr 148px 1fr;
-      gap: 0; align-items: center;
-      margin-top: 56px; min-height: 420px;
+      position: relative; width: 100%; height: 460px; margin-top: 16px;
     }
     .dbhub__svg {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: none; overflow: visible; z-index: 0;
     }
-    .dbhub__col { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
-    .dbhub__col--right { align-items: flex-end; }
-    .dbhub__card {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,.04); border: 1px solid rgba(14,184,157,.18);
-      border-radius: 10px; padding: 11px 14px; cursor: default;
+    .dbhub__sigla-pin {
+      position: absolute;
+      left: calc(50% + var(--px, 0px));
+      top:  calc(50% + var(--py, 0px));
+      transform: translate(-50%, -50%);
+      font-size: .8rem; font-weight: 800; color: var(--green);
+      background: rgba(14,184,157,.1); border: 1px solid rgba(14,184,157,.35);
+      border-radius: 8px; padding: 6px 13px;
+      white-space: nowrap; z-index: 2; cursor: default;
       transition: var(--trans); backdrop-filter: blur(4px);
     }
-    .dbhub__card:hover { background: rgba(14,184,157,.09); border-color: rgba(14,184,157,.5); box-shadow: 0 0 18px rgba(14,184,157,.18); }
-    .dbhub__card--right { flex-direction: row-reverse; }
-    .dbhub__badge {
-      font-size: .82rem; font-weight: 800; color: var(--green);
-      background: rgba(14,184,157,.12); border: 1px solid rgba(14,184,157,.3);
-      border-radius: 6px; padding: 2px 8px; flex-shrink: 0;
-    }
-    .dbhub__desc { font-size: .72rem; color: rgba(255,255,255,.45); line-height: 1.3; }
+    .dbhub__sigla-pin:hover { background: rgba(14,184,157,.2); border-color: rgba(14,184,157,.6); box-shadow: 0 0 14px rgba(14,184,157,.2); }
     .dbhub__center {
-      position: relative; width: 110px; height: 110px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto; z-index: 2; flex-shrink: 0;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 110px; height: 110px;
+      display: flex; align-items: center; justify-content: center; z-index: 3;
     }
     .dbhub__center-ring {
       position: absolute; border-radius: 50%; border: 1px solid rgba(14,184,157,.25);
@@ -559,10 +552,8 @@
       box-shadow: 0 0 0 1px rgba(14,184,157,.15), 0 0 40px rgba(14,184,157,.35), 0 0 80px rgba(14,184,157,.15);
     }
     @media (max-width: 700px) {
-      .dbhub { grid-template-columns: 1fr; gap: 20px; min-height: auto; }
-      .dbhub__col--right { align-items: flex-start; }
-      .dbhub__card--right { flex-direction: row; }
-      .dbhub__center { order: -1; margin-bottom: 8px; }
+      .dbhub { height: 300px; }
+      .dbhub__sigla-pin { font-size: .68rem; padding: 4px 9px; --px: calc(var(--px-m, 0px)); --py: calc(var(--py-m, 0px)); }
       .dbhub__svg { display: none; }
     }
 
@@ -1021,50 +1012,12 @@
     <div class="container">
       <!-- Hub component -->
       <div class="dbhub reveal" id="dbHub">
-
-        <!-- Left nodes -->
-        <div class="dbhub__col dbhub__col--left">
-          <div class="dbhub__item" id="dbN0">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">PCMSO</span>
-              <span class="dbhub__desc">Programa de Controle Médico de Saúde</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN1">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">PGR</span>
-              <span class="dbhub__desc">Programa de Gerenciamento de Riscos</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN2">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">ASO</span>
-              <span class="dbhub__desc">Atestado de Saúde Ocupacional</span>
-            </div>
-          </div>
-          <div class="dbhub__item" id="dbN3">
-            <div class="dbhub__card">
-              <span class="dbhub__badge">NRs</span>
-              <span class="dbhub__desc">Normas Regulamentadoras</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SVG canvas -->
+        <!-- SVG beams -->
         <svg class="dbhub__svg" id="dbSvg" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <filter id="dbGlow">
-              <feGaussianBlur stdDeviation="2.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <linearGradient id="beamL" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#0eb89d" stop-opacity="0"/>
-              <stop offset="50%" stop-color="#0eb89d" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#0eb89d" stop-opacity="0"/>
-            </linearGradient>
+            <filter id="dbGlow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
         </svg>
-
         <!-- Center hub -->
         <div class="dbhub__center" id="dbCenter">
           <div class="dbhub__center-ring dbhub__center-ring--1"></div>
@@ -1074,35 +1027,15 @@
             <span style="color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;margin-top:4px;">BMR</span>
           </div>
         </div>
-
-        <!-- Right nodes -->
-        <div class="dbhub__col dbhub__col--right">
-          <div class="dbhub__item dbhub__item--right" id="dbN4">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">LIP</span>
-              <span class="dbhub__desc">Laudo de Insalubridade e Periculosidade</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN5">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">LTCAT</span>
-              <span class="dbhub__desc">Laudo Técnico das Condições Ambientais</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN6">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">PPP</span>
-              <span class="dbhub__desc">Perfil Profissiográfico Previdenciário</span>
-            </div>
-          </div>
-          <div class="dbhub__item dbhub__item--right" id="dbN7">
-            <div class="dbhub__card dbhub__card--right">
-              <span class="dbhub__badge">eSocial</span>
-              <span class="dbhub__desc">Escrituração Digital SST</span>
-            </div>
-          </div>
-        </div>
-
+        <!-- Siglas orbiting center — radius 180px, 45° apart -->
+        <div class="dbhub__sigla-pin" id="dbN0" style="--px:180px;--py:0px">eSocial</div>
+        <div class="dbhub__sigla-pin" id="dbN1" style="--px:127px;--py:127px">PPP</div>
+        <div class="dbhub__sigla-pin" id="dbN2" style="--px:0px;--py:180px">LTCAT</div>
+        <div class="dbhub__sigla-pin" id="dbN3" style="--px:-127px;--py:127px">LIP</div>
+        <div class="dbhub__sigla-pin" id="dbN4" style="--px:-180px;--py:0px">NRs</div>
+        <div class="dbhub__sigla-pin" id="dbN5" style="--px:-127px;--py:-127px">ASO</div>
+        <div class="dbhub__sigla-pin" id="dbN6" style="--px:0px;--py:-180px">PGR</div>
+        <div class="dbhub__sigla-pin" id="dbN7" style="--px:127px;--py:-127px">PCMSO</div>
       </div><!-- /dbhub -->
     </div>
   </section>
@@ -1566,14 +1499,11 @@
         const card = document.getElementById('dbN' + i);
         if (!card) continue;
         const cRt = card.getBoundingClientRect();
-        const isRight = i >= 4;
-        const nx = isRight ? (cRt.left - hRect.left) : (cRt.right - hRect.left);
+        const nx = cRt.left - hRect.left + cRt.width / 2;
         const ny = cRt.top - hRect.top + cRt.height / 2;
 
-        // Curved path using quadratic bezier
-        const mx = (nx + cx) / 2;
-        const my = ny;
-        const path = `M ${nx} ${ny} Q ${mx} ${my} ${cx} ${cy}`;
+        // Straight line from pin center to hub center
+        const path = `M ${nx} ${ny} L ${cx} ${cy}`;
 
         // Background beam line
         const beam = document.createElementNS('http://www.w3.org/2000/svg','path');
