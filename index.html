@@ -447,6 +447,68 @@
     .diff-card__text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; }
 
     /* ============================================================
+       RADAR EFFECT
+    ============================================================ */
+    .radar-wrap {
+      position: relative; max-width: 680px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 24px; padding-bottom: 200px; overflow: hidden;
+    }
+    .radar-row { display: flex; gap: 32px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .radar-item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      animation: radarFadeIn .5s ease both;
+      animation-delay: var(--d, 0s);
+    }
+    @keyframes radarFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+    .radar-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(220,80,80,.2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; transition: var(--trans);
+    }
+    .radar-icon::after {
+      content:''; position:absolute; inset:-5px; border-radius:16px;
+      border:1px solid rgba(220,80,80,.5);
+      animation: radarPing 4s ease-out infinite;
+      animation-delay: var(--d, 0s);
+    }
+    @keyframes radarPing {
+      0%,100% { opacity:0; transform:scale(1); }
+      15% { opacity:.8; }
+      60% { opacity:0; transform:scale(1.5); }
+    }
+    .radar-label { font-size:.72rem; font-weight:600; color:rgba(255,255,255,.5); text-align:center; max-width:90px; line-height:1.3; }
+    .radar-circle {
+      position:absolute; bottom:-260px; left:50%; transform:translateX(-50%);
+      width:560px; height:560px; border-radius:50%;
+    }
+    .radar-ring {
+      position:absolute; border-radius:50%;
+      border:1px solid rgba(220,80,80,.15);
+    }
+    .radar-ring--1 { inset:0; }
+    .radar-ring--2 { inset:60px; }
+    .radar-ring--3 { inset:120px; }
+    .radar-sweep {
+      position:absolute; inset:0; border-radius:50%;
+      background:conic-gradient(from 0deg, transparent 0deg, rgba(220,80,80,.04) 40deg, rgba(220,80,80,.25) 70deg, transparent 70deg);
+      animation:radarSpin 4s linear infinite;
+    }
+    @keyframes radarSpin { to { transform:rotate(360deg); } }
+    .radar-dot {
+      position:absolute; top:50%; left:50%;
+      width:8px; height:8px; border-radius:50%;
+      background:#e05252; box-shadow:0 0 12px #e05252;
+      transform:translate(-50%,-50%);
+    }
+    @media (max-width:700px) {
+      .radar-wrap { padding-bottom:140px; }
+      .radar-row { gap:20px; }
+      .radar-circle { width:340px; height:340px; bottom:-160px; }
+    }
+
+    /* ============================================================
        INTEGRATION HUB (database-with-rest-api style)
     ============================================================ */
     .dbhub {
@@ -850,6 +912,80 @@
         <div class="problem__img-wrap reveal-right">
           <img src="https://i.postimg.cc/Y0m65jfc/bmrx.png" alt="Riscos trabalhistas" class="neon-green" />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RADAR ===================== -->
+  <section class="section" style="background:#07111a; overflow:hidden;">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:48px;">
+        <div class="section-tag">Detecção de Riscos</div>
+        <h2 class="section-title" style="color:#fff;">Riscos que a BMR <span>identifica e elimina</span></h2>
+      </div>
+      <div class="radar-wrap reveal">
+        <!-- Row 1 -->
+        <div class="radar-row">
+          <div class="radar-item" style="--d:0.2s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <span class="radar-label">Multas trabalhistas</span>
+          </div>
+          <div class="radar-item" style="--d:0.4s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V2M12 2L4 6l8 4 8-4-8-4zM4 18l8 4 8-4M4 14l8 4 8-4"/></svg>
+            </div>
+            <span class="radar-label">Processos e passivos</span>
+          </div>
+          <div class="radar-item" style="--d:0.6s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+            </div>
+            <span class="radar-label">Irregularidades no eSocial</span>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="radar-row">
+          <div class="radar-item" style="--d:0.8s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+            </div>
+            <span class="radar-label">Falta de exames</span>
+          </div>
+          <div class="radar-item" style="--d:1s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+            </div>
+            <span class="radar-label">Laudos vencidos</span>
+          </div>
+        </div>
+        <!-- Row 3 -->
+        <div class="radar-row">
+          <div class="radar-item" style="--d:1.2s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <span class="radar-label">Falta de treinamentos</span>
+          </div>
+          <div class="radar-item" style="--d:1.4s">
+            <div class="radar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05252" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <span class="radar-label">Não conformidade legal</span>
+          </div>
+        </div>
+
+        <!-- Radar circle -->
+        <div class="radar-circle">
+          <div class="radar-ring radar-ring--1"></div>
+          <div class="radar-ring radar-ring--2"></div>
+          <div class="radar-ring radar-ring--3"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-dot"></div>
+        </div>
+        <!-- Bottom fade line -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(220,80,80,.25),transparent);z-index:10;"></div>
       </div>
     </div>
   </section>
