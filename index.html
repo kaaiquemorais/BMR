@@ -275,8 +275,12 @@
     /* ============================================================
        PROBLEM
     ============================================================ */
-    .problem__grid {
-      display: grid; grid-template-columns: 1fr; gap: 40px;
+    .problem__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    .problem__head-wrap { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .problem__grid-img img { width: 260px; height: auto; }
+    @media (max-width: 768px) {
+      .problem__head-wrap { grid-template-columns: 1fr; }
+      .problem__grid-img { display: none; }
     }
     .risk-list { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
     .risk-item {
@@ -352,6 +356,56 @@
     }
     .aso-card__name { font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
     .aso-card__desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    /* Voice Player */
+    .voice-player {
+      margin-top: 40px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(14,184,157,.06) 0%, rgba(14,184,157,.12) 100%);
+      border: 1px solid rgba(14,184,157,.25);
+      border-radius: 20px;
+    }
+    .voice-player__label { font-size: .85rem; font-weight: 600; color: #0eb89d; letter-spacing: .04em; text-transform: uppercase; }
+    .voice-player__bars {
+      display: flex; align-items: center; gap: 4px; height: 48px;
+    }
+    .vp-bar {
+      width: 4px; border-radius: 2px;
+      background: #0eb89d;
+      opacity: .35;
+      transition: opacity .3s;
+    }
+    .voice-player--playing .vp-bar {
+      opacity: 1;
+      animation: vpWave 1.2s ease-in-out infinite;
+    }
+    @keyframes vpWave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(var(--h, 2)); }
+    }
+    .voice-player__btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #0eb89d, #0a9480);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 0 rgba(14,184,157,.4);
+      transition: box-shadow .3s, transform .2s;
+      position: relative;
+    }
+    .voice-player__btn:hover { transform: scale(1.06); }
+    .voice-player--playing .voice-player__btn {
+      animation: vpPulse 2s ease-in-out infinite;
+    }
+    @keyframes vpPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(14,184,157,.5); }
+      70%  { box-shadow: 0 0 0 18px rgba(14,184,157,0); }
+      100% { box-shadow: 0 0 0 0 rgba(14,184,157,0); }
+    }
+    .vp-icon-pause { display: none; }
+    .voice-player--playing .vp-icon-play { display: none; }
+    .voice-player--playing .vp-icon-pause { display: block; }
+    .voice-player__time { font-size: .82rem; color: var(--muted); min-height: 1.2em; }
 
     /* ============================================================
        TRAINING
@@ -552,6 +606,9 @@
     @media (max-width: 700px) {
       .dbhub { height: 330px; --hub-r: 122px; }
       .dbhub__sigla-pin { font-size: .68rem; padding: 4px 9px; }
+    }
+    @media (min-width: 701px) {
+      #integracao { padding-top: 24px; }
     }
 
     /* ============================================================
@@ -862,13 +919,20 @@
   <section class="section section--soft">
     <div class="container">
       <div class="problem__grid">
-        <div class="reveal text-center">
-          <div class="section-tag">Diagnóstico</div>
-          <h2 class="section-title">Sua empresa está preparada para <span>fiscalizações</span> e exigências legais?</h2>
-          <div class="divider divider--center"></div>
-          <p class="section-subtitle">
-            A ausência de uma gestão eficiente de SST expõe sua empresa a riscos severos que comprometem a operação, as finanças e a reputação do negócio.
-          </p>
+        <div class="problem__head-wrap">
+          <div class="reveal text-center">
+            <div class="section-tag">Diagnóstico</div>
+            <h2 class="section-title">Sua empresa está preparada para <span>fiscalizações</span> e exigências legais?</h2>
+            <div class="divider divider--center"></div>
+            <p class="section-subtitle">
+              A ausência de uma gestão eficiente de SST expõe sua empresa a riscos severos que comprometem a operação, as finanças e a reputação do negócio.
+            </p>
+          </div>
+          <div class="problem__grid-img reveal-right">
+            <img src="https://i.postimg.cc/FRrZwDqr/bmrx.png" alt="Riscos SST" class="neon-green" />
+          </div>
+        </div>
+        <div class="reveal">
           <div class="risk-list">
             <div class="risk-item">
               <div class="risk-item__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
@@ -1074,10 +1138,34 @@
               <div class="aso-card__desc">Integração e transmissão automática dos eventos de SST para o eSocial, sem burocracia.</div>
             </div>
           </div>
+
+          <!-- Voice Player -->
+          <div class="voice-player reveal" id="voicePlayer">
+            <div class="voice-player__label">Ouça nossa apresentação</div>
+            <div class="voice-player__bars" id="vpBars"></div>
+            <button class="voice-player__btn" id="vpBtn" aria-label="Reproduzir apresentação">
+              <!-- Mic icon (idle) -->
+              <svg class="vp-icon-play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+                <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+              <!-- Pause icon (playing) -->
+              <svg class="vp-icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="4" width="4" height="16"/>
+                <rect x="14" y="4" width="4" height="16"/>
+              </svg>
+            </button>
+            <div class="voice-player__time" id="vpTime"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Hidden SoundCloud player -->
+  <iframe id="scFrame" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fkaaiquemorais%2Fbmr-saude-e-seguranca&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false" style="display:none;" allow="autoplay"></iframe>
 
   <!-- ===================== TRAINING ===================== -->
   <section class="section section--soft" id="treinamentos">
@@ -1603,6 +1691,71 @@
     });
   </script>
 
+  <!-- SoundCloud Widget API -->
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+    /* ----- Voice Player ----- */
+    (function () {
+      const player   = document.getElementById('voicePlayer');
+      const btn      = document.getElementById('vpBtn');
+      const barsWrap = document.getElementById('vpBars');
+      const timeEl   = document.getElementById('vpTime');
+      const iframe   = document.getElementById('scFrame');
+      if (!player || !btn || !iframe) return;
+
+      /* Build waveform bars with random heights */
+      const barCount = 28;
+      const heights  = [];
+      for (let i = 0; i < barCount; i++) {
+        const h = Math.random() * 2.5 + 0.6;
+        heights.push(h);
+        const bar = document.createElement('div');
+        bar.className = 'vp-bar';
+        bar.style.cssText = `height:${Math.round(h * 14)}px; --h:${h.toFixed(2)};
+          animation-delay:${(i / barCount * 1.2).toFixed(2)}s;
+          animation-duration:${(0.9 + Math.random() * 0.7).toFixed(2)}s;`;
+        barsWrap.appendChild(bar);
+      }
+
+      /* SoundCloud Widget */
+      const widget = SC.Widget(iframe);
+      let isPlaying = false;
+      let timerInt  = null;
+      let elapsed   = 0;
+
+      function fmt(s) {
+        const m = Math.floor(s / 60);
+        const sec = String(Math.floor(s % 60)).padStart(2, '0');
+        return `${m}:${sec}`;
+      }
+
+      function startTimer() {
+        clearInterval(timerInt);
+        timerInt = setInterval(() => { elapsed++; timeEl.textContent = fmt(elapsed); }, 1000);
+      }
+      function stopTimer() { clearInterval(timerInt); }
+
+      widget.bind(SC.Widget.Events.FINISH, () => {
+        isPlaying = false;
+        player.classList.remove('voice-player--playing');
+        stopTimer(); elapsed = 0; timeEl.textContent = '';
+      });
+
+      btn.addEventListener('click', () => {
+        if (!isPlaying) {
+          widget.play();
+          isPlaying = true;
+          player.classList.add('voice-player--playing');
+          startTimer();
+        } else {
+          widget.pause();
+          isPlaying = false;
+          player.classList.remove('voice-player--playing');
+          stopTimer();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
