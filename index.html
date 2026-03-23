@@ -447,46 +447,58 @@
     .diff-card__text { font-size: .86rem; color: rgba(255,255,255,.6); line-height: 1.65; }
 
     /* ============================================================
-       INTEGRATION HUB
+       INTEGRATION HUB (database-with-rest-api style)
     ============================================================ */
-    .ch-hub {
+    .dbhub {
       position: relative; display: grid;
-      grid-template-columns: 1fr 140px 1fr;
-      gap: 40px; align-items: center;
-      margin-top: 56px; min-height: 380px;
+      grid-template-columns: 1fr 148px 1fr;
+      gap: 0; align-items: center;
+      margin-top: 56px; min-height: 420px;
     }
-    .ch-nodes { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
-    .ch-node {
-      background: rgba(255,255,255,.04); border: 1px solid rgba(14,184,157,.2);
-      border-radius: 10px; padding: 12px 16px;
-      display: flex; align-items: center; gap: 12px;
-      transition: var(--trans); position: relative; z-index: 1;
-    }
-    .ch-node:hover { background: rgba(14,184,157,.08); border-color: var(--green); box-shadow: 0 0 16px rgba(14,184,157,.2); }
-    .ch-node__label { font-size: .92rem; font-weight: 800; color: var(--white); }
-    .ch-node__desc { font-size: .72rem; color: rgba(255,255,255,.45); margin-top: 1px; }
-    .ch-node__dot {
-      width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
-      background: var(--green); box-shadow: 0 0 8px var(--green);
-    }
-    .ch-node--right { flex-direction: row-reverse; text-align: right; }
-    .ch-center {
-      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto;
-      background: linear-gradient(135deg, var(--green-dark), var(--green));
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 40px rgba(14,184,157,.45), 0 0 80px rgba(14,184,157,.2);
-      position: relative; z-index: 2;
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-    .ch-svg {
+    .dbhub__svg {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: none; overflow: visible; z-index: 0;
     }
+    .dbhub__col { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
+    .dbhub__col--right { align-items: flex-end; }
+    .dbhub__card {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(14,184,157,.18);
+      border-radius: 10px; padding: 11px 14px; cursor: default;
+      transition: var(--trans); backdrop-filter: blur(4px);
+    }
+    .dbhub__card:hover { background: rgba(14,184,157,.09); border-color: rgba(14,184,157,.5); box-shadow: 0 0 18px rgba(14,184,157,.18); }
+    .dbhub__card--right { flex-direction: row-reverse; }
+    .dbhub__badge {
+      font-size: .82rem; font-weight: 800; color: var(--green);
+      background: rgba(14,184,157,.12); border: 1px solid rgba(14,184,157,.3);
+      border-radius: 6px; padding: 2px 8px; flex-shrink: 0;
+    }
+    .dbhub__desc { font-size: .72rem; color: rgba(255,255,255,.45); line-height: 1.3; }
+    .dbhub__center {
+      position: relative; width: 110px; height: 110px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto; z-index: 2; flex-shrink: 0;
+    }
+    .dbhub__center-ring {
+      position: absolute; border-radius: 50%; border: 1px solid rgba(14,184,157,.25);
+    }
+    .dbhub__center-ring--1 { inset: -18px; animation: spin 8s linear infinite; border-top-color: rgba(14,184,157,.7); }
+    .dbhub__center-ring--2 { inset: -32px; animation: spin 14s linear infinite reverse; border-right-color: rgba(14,184,157,.5); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .dbhub__center-core {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(135deg, #0a2a22, #0f3d2e);
+      border: 1.5px solid rgba(14,184,157,.4);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 1px rgba(14,184,157,.15), 0 0 40px rgba(14,184,157,.35), 0 0 80px rgba(14,184,157,.15);
+    }
     @media (max-width: 700px) {
-      .ch-hub { grid-template-columns: 1fr; gap: 24px; min-height: auto; }
-      .ch-center { width: 80px; height: 80px; order: -1; }
-      .ch-node--right { flex-direction: row; text-align: left; }
-      .ch-svg { display: none; }
+      .dbhub { grid-template-columns: 1fr; gap: 20px; min-height: auto; }
+      .dbhub__col--right { align-items: flex-start; }
+      .dbhub__card--right { flex-direction: row; }
+      .dbhub__center { order: -1; margin-bottom: 8px; }
+      .dbhub__svg { display: none; }
     }
 
     /* ============================================================
@@ -1049,7 +1061,7 @@
   </section>
 
   <!-- ===================== INTEGRATION HUB ===================== -->
-  <section class="section section--dark" id="integracao">
+  <section class="section section--dark" id="integracao" style="overflow:hidden;">
     <div class="container">
       <div class="text-center reveal">
         <div class="section-tag">Plataforma Integrada</div>
@@ -1057,48 +1069,92 @@
         <div class="divider divider--center"></div>
         <p class="section-subtitle">Documentos, exames, laudos e envios ao eSocial gerenciados de forma centralizada pela BMR.</p>
       </div>
-      <div class="ch-hub reveal">
-        <div class="ch-nodes ch-nodes--left">
-          <div class="ch-node" id="chNode0">
-            <div class="ch-node__dot"></div>
-            <div><div class="ch-node__label">ASO</div><div class="ch-node__desc">Atestado de Saúde Ocupacional</div></div>
+
+      <!-- Hub component -->
+      <div class="dbhub reveal" id="dbHub">
+
+        <!-- Left nodes -->
+        <div class="dbhub__col dbhub__col--left">
+          <div class="dbhub__item" id="dbN0">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">ASO</span>
+              <span class="dbhub__desc">Atestado de Saúde Ocupacional</span>
+            </div>
           </div>
-          <div class="ch-node" id="chNode1">
-            <div class="ch-node__dot"></div>
-            <div><div class="ch-node__label">CAT</div><div class="ch-node__desc">Comunicação de Acidente de Trabalho</div></div>
+          <div class="dbhub__item" id="dbN1">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">CAT</span>
+              <span class="dbhub__desc">Comunicação de Acidente de Trabalho</span>
+            </div>
           </div>
-          <div class="ch-node" id="chNode2">
-            <div class="ch-node__dot"></div>
-            <div><div class="ch-node__label">OS</div><div class="ch-node__desc">Ordem de Serviço de Segurança</div></div>
+          <div class="dbhub__item" id="dbN2">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">OS</span>
+              <span class="dbhub__desc">Ordem de Serviço de Segurança</span>
+            </div>
           </div>
-          <div class="ch-node" id="chNode3">
-            <div class="ch-node__dot"></div>
-            <div><div class="ch-node__label">APR</div><div class="ch-node__desc">Análise Preliminar de Risco</div></div>
-          </div>
-        </div>
-        <div class="ch-center" id="chCenter">
-          <img src="https://i.postimg.cc/SK5Vy3xt/logo-bmr.png" alt="BMR" style="width:56px;height:auto;filter:brightness(0) invert(1);" />
-        </div>
-        <div class="ch-nodes ch-nodes--right">
-          <div class="ch-node ch-node--right" id="chNode4">
-            <div><div class="ch-node__label">PT</div><div class="ch-node__desc">Permissão de Trabalho</div></div>
-            <div class="ch-node__dot"></div>
-          </div>
-          <div class="ch-node ch-node--right" id="chNode5">
-            <div><div class="ch-node__label">FISPQ</div><div class="ch-node__desc">Ficha de Informação de Produto</div></div>
-            <div class="ch-node__dot"></div>
-          </div>
-          <div class="ch-node ch-node--right" id="chNode6">
-            <div><div class="ch-node__label">eSocial</div><div class="ch-node__desc">Escrituração Digital das Obrigações</div></div>
-            <div class="ch-node__dot"></div>
-          </div>
-          <div class="ch-node ch-node--right" id="chNode7">
-            <div><div class="ch-node__label">SST</div><div class="ch-node__desc">Saúde e Segurança do Trabalho</div></div>
-            <div class="ch-node__dot"></div>
+          <div class="dbhub__item" id="dbN3">
+            <div class="dbhub__card">
+              <span class="dbhub__badge">APR</span>
+              <span class="dbhub__desc">Análise Preliminar de Risco</span>
+            </div>
           </div>
         </div>
-        <svg class="ch-svg" id="chSvg"></svg>
-      </div>
+
+        <!-- SVG canvas -->
+        <svg class="dbhub__svg" id="dbSvg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="dbGlow">
+              <feGaussianBlur stdDeviation="2.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="beamL" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0eb89d" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#0eb89d" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#0eb89d" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Center hub -->
+        <div class="dbhub__center" id="dbCenter">
+          <div class="dbhub__center-ring dbhub__center-ring--1"></div>
+          <div class="dbhub__center-ring dbhub__center-ring--2"></div>
+          <div class="dbhub__center-core">
+            <img src="https://i.postimg.cc/SK5Vy3xt/logo-bmr.png" alt="BMR" style="width:44px;height:auto;filter:brightness(0) invert(1);display:block;" />
+            <span style="color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;margin-top:4px;">BMR</span>
+          </div>
+        </div>
+
+        <!-- Right nodes -->
+        <div class="dbhub__col dbhub__col--right">
+          <div class="dbhub__item dbhub__item--right" id="dbN4">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">PT</span>
+              <span class="dbhub__desc">Permissão de Trabalho</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN5">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">FISPQ</span>
+              <span class="dbhub__desc">Ficha de Informação de Produto</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN6">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">eSocial</span>
+              <span class="dbhub__desc">Escrituração Digital SST</span>
+            </div>
+          </div>
+          <div class="dbhub__item dbhub__item--right" id="dbN7">
+            <div class="dbhub__card dbhub__card--right">
+              <span class="dbhub__badge">SST</span>
+              <span class="dbhub__desc">Saúde e Segurança do Trabalho</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dbhub -->
     </div>
   </section>
 
@@ -1383,50 +1439,66 @@
       sectorTrack.innerHTML = sHTML + sHTML;
     }
 
-    /* ----- Integration Hub ----- */
-    function drawHub() {
-      const svg = document.getElementById('chSvg');
-      const hub = svg && svg.closest('.ch-hub');
-      const center = document.getElementById('chCenter');
-      if (!svg || !hub || !center) return;
-      svg.innerHTML = '';
-      const hubRect = hub.getBoundingClientRect();
+    /* ----- Integration Hub (database-with-rest-api) ----- */
+    function buildHub() {
+      const svg = document.getElementById('dbSvg');
+      const hub = document.getElementById('dbHub');
+      const center = document.getElementById('dbCenter');
+      if (!svg || !hub || !center || window.innerWidth <= 700) return;
+
+      // Remove only dynamic elements (paths + animated circles), keep defs
+      svg.querySelectorAll('.db-beam, .db-dot').forEach(el => el.remove());
+
+      const hRect = hub.getBoundingClientRect();
       const cRect = center.getBoundingClientRect();
-      const cx = cRect.left - hubRect.left + cRect.width / 2;
-      const cy = cRect.top - hubRect.top + cRect.height / 2;
-      const colors = ['#0eb89d','#1dd6b8','#0a9480'];
+      const cx = cRect.left - hRect.left + cRect.width / 2;
+      const cy = cRect.top - hRect.top + cRect.height / 2;
+
       for (let i = 0; i < 8; i++) {
-        const node = document.getElementById('chNode' + i);
-        if (!node) continue;
-        const dot = node.querySelector('.ch-node__dot');
-        const dRect = dot.getBoundingClientRect();
-        const nx = dRect.left - hubRect.left + dRect.width / 2;
-        const ny = dRect.top - hubRect.top + dRect.height / 2;
-        const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-        line.setAttribute('x1', nx); line.setAttribute('y1', ny);
-        line.setAttribute('x2', cx); line.setAttribute('y2', cy);
-        line.setAttribute('stroke','rgba(14,184,157,0.18)');
-        line.setAttribute('stroke-width','1.5');
-        line.setAttribute('stroke-dasharray','5 5');
-        svg.appendChild(line);
-        const circ = document.createElementNS('http://www.w3.org/2000/svg','circle');
-        circ.setAttribute('r','3.5');
-        circ.setAttribute('fill', colors[i % colors.length]);
-        circ.setAttribute('filter','url(#glow)');
+        const card = document.getElementById('dbN' + i);
+        if (!card) continue;
+        const cRt = card.getBoundingClientRect();
+        const isRight = i >= 4;
+        const nx = isRight ? (cRt.left - hRect.left) : (cRt.right - hRect.left);
+        const ny = cRt.top - hRect.top + cRt.height / 2;
+
+        // Curved path using quadratic bezier
+        const mx = (nx + cx) / 2;
+        const my = ny;
+        const path = `M ${nx} ${ny} Q ${mx} ${my} ${cx} ${cy}`;
+
+        // Background beam line
+        const beam = document.createElementNS('http://www.w3.org/2000/svg','path');
+        beam.setAttribute('d', path);
+        beam.setAttribute('fill','none');
+        beam.setAttribute('stroke','rgba(14,184,157,0.12)');
+        beam.setAttribute('stroke-width','1.5');
+        beam.setAttribute('class','db-beam');
+        svg.appendChild(beam);
+
+        // Animated glow dot
+        const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        dot.setAttribute('r', '3');
+        dot.setAttribute('fill', '#0eb89d');
+        dot.setAttribute('filter', 'url(#dbGlow)');
+        dot.setAttribute('class', 'db-dot');
+        dot.setAttribute('opacity', '0.9');
         const am = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
-        am.setAttribute('dur', (1.8 + i * 0.25) + 's');
+        am.setAttribute('dur', (2 + i * 0.3) + 's');
         am.setAttribute('repeatCount','indefinite');
-        am.setAttribute('begin', (i * 0.18) + 's');
-        am.setAttribute('path', `M ${nx} ${ny} L ${cx} ${cy}`);
-        circ.appendChild(am);
-        svg.appendChild(circ);
+        am.setAttribute('begin', (i * 0.22) + 's');
+        const mp = document.createElementNS('http://www.w3.org/2000/svg','mpath');
+        // use path element
+        const pid = 'dbPath' + i;
+        beam.setAttribute('id', pid);
+        mp.setAttributeNS('http://www.w3.org/1999/xlink','href','#' + pid);
+        am.appendChild(mp);
+        dot.appendChild(am);
+        svg.appendChild(dot);
       }
-      const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
-      defs.innerHTML = '<filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
-      svg.insertBefore(defs, svg.firstChild);
     }
-    setTimeout(drawHub, 200);
-    window.addEventListener('resize', drawHub);
+    setTimeout(buildHub, 300);
+    window.addEventListener('resize', () => setTimeout(buildHub, 100));
 
     /* ----- Scroll reveal ----- */
     const observer = new IntersectionObserver((entries) => {
