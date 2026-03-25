@@ -461,74 +461,6 @@
     .nr-tag--more { background: transparent; border-style: dashed; color: var(--muted); font-style: italic; }
 
     /* ============================================================
-       NR01 SECTION
-    ============================================================ */
-    .nr01__grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: center;
-    }
-    .nr01__text .section-tag { margin-bottom: 16px; }
-    .nr01__text .section-title { margin-bottom: 16px; }
-    .nr01__text .section-subtitle { margin-bottom: 28px; }
-    .nr01__check-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
-    .nr01__check-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: .92rem; color: var(--slate); line-height: 1.6;
-    }
-    .nr01__check-icon {
-      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-      background: var(--green-dim); border: 1px solid rgba(14,184,157,.3);
-      display: flex; align-items: center; justify-content: center; margin-top: 1px;
-    }
-    /* Brain widget */
-    .brain-wrap {
-      display: flex; align-items: center; justify-content: center;
-    }
-    .brain-glass {
-      position: relative; width: 320px; height: 320px; border-radius: 50%;
-      background: rgba(14,184,157,.06);
-      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(14,184,157,.22);
-      box-shadow: 0 0 60px rgba(14,184,157,.12), inset 0 0 40px rgba(14,184,157,.05);
-      display: flex; align-items: center; justify-content: center;
-      overflow: visible;
-    }
-    .brain-glass::before {
-      content: ''; position: absolute; inset: -1px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(14,184,157,.2) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .brain-ring {
-      position: absolute; border-radius: 50%;
-      border: 1px solid rgba(14,184,157,.1);
-      animation: brainPulse 3s ease-in-out infinite;
-    }
-    .brain-ring--1 { width: 360px; height: 360px; animation-delay: 0s; }
-    .brain-ring--2 { width: 400px; height: 400px; animation-delay: .6s; opacity: .6; }
-    .brain-ring--3 { width: 440px; height: 440px; animation-delay: 1.2s; opacity: .3; }
-    @keyframes brainPulse {
-      0%, 100% { transform: scale(1); opacity: .8; }
-      50% { transform: scale(1.04); opacity: .3; }
-    }
-    .brain-svg {
-      width: 160px; height: 160px;
-      animation: brainSpin 18s linear infinite;
-      filter: drop-shadow(0 0 18px rgba(14,184,157,.5));
-    }
-    @keyframes brainSpin {
-      from { transform: rotateY(0deg); }
-      to   { transform: rotateY(360deg); }
-    }
-    @media (max-width: 768px) {
-      .nr01__grid { grid-template-columns: 1fr; gap: 40px; }
-      .brain-glass { width: 240px; height: 240px; }
-      .brain-ring--1 { width: 270px; height: 270px; }
-      .brain-ring--2 { width: 300px; height: 300px; }
-      .brain-ring--3 { width: 330px; height: 330px; }
-      .brain-svg { width: 120px; height: 120px; }
-    }
-
-    /* ============================================================
        BENEFITS
     ============================================================ */
     .benefits__header-wrap {
@@ -573,6 +505,58 @@
     }
     .benefit-card__title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .benefit-card__text { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+    /* ============================================================
+       NR-01 SECTION
+    ============================================================ */
+    .nr01__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 56px; }
+    .nr01__checks { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .nr01__check-item { display: flex; align-items: flex-start; gap: 14px; font-size: .9rem; color: rgba(255,255,255,.72); line-height: 1.6; }
+    .nr01__check-icon {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(14,184,157,.1); border: 1px solid rgba(14,184,157,.35);
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .nr01__widget { display: flex; align-items: center; justify-content: center; }
+    .clipboard-svg {
+      width: 240px; height: auto;
+      filter: drop-shadow(0 0 18px rgba(14,184,157,.6)) drop-shadow(0 0 40px rgba(14,184,157,.28));
+      animation: floatBob 4s ease-in-out infinite;
+    }
+    @keyframes floatBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .ck-check { stroke-dasharray: 25; stroke-dashoffset: 25; transition: stroke-dashoffset .45s cubic-bezier(.4,0,.2,1); }
+    .ck-fill  { opacity: 0; transition: opacity .3s ease; }
+    .nr01__widget.visible .ck-check-1 { stroke-dashoffset: 0; transition-delay: .4s; }
+    .nr01__widget.visible .ck-check-2 { stroke-dashoffset: 0; transition-delay: .85s; }
+    .nr01__widget.visible .ck-check-3 { stroke-dashoffset: 0; transition-delay: 1.3s; }
+    .nr01__widget.visible .ck-check-4 { stroke-dashoffset: 0; transition-delay: 1.75s; }
+    .nr01__widget.visible .ck-check-5 { stroke-dashoffset: 0; transition-delay: 2.2s; }
+    .nr01__widget.visible .ck-fill-1  { opacity: 1; transition-delay: .65s; }
+    .nr01__widget.visible .ck-fill-2  { opacity: 1; transition-delay: 1.1s; }
+    .nr01__widget.visible .ck-fill-3  { opacity: 1; transition-delay: 1.55s; }
+    .nr01__widget.visible .ck-fill-4  { opacity: 1; transition-delay: 2.0s; }
+    .nr01__widget.visible .ck-fill-5  { opacity: 1; transition-delay: 2.45s; }
+    .btn-glass-nr01 {
+      margin-top: 36px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 50px;
+      background: rgba(14,184,157,.15);
+      border: 1px solid rgba(14,184,157,.45);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      color: #0eb89d; font-size: .92rem; font-weight: 600;
+      text-decoration: none; letter-spacing: .02em;
+      box-shadow: 0 0 24px rgba(14,184,157,.18), inset 0 1px 0 rgba(14,184,157,.2);
+      transition: background .25s, box-shadow .25s, transform .18s;
+    }
+    .btn-glass-nr01:hover {
+      background: rgba(14,184,157,.28);
+      box-shadow: 0 0 40px rgba(14,184,157,.38), inset 0 1px 0 rgba(14,184,157,.3);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .nr01__grid { grid-template-columns: 1fr; gap: 40px; }
+      .clipboard-svg { width: 180px; }
+    }
 
     /* ============================================================
        DIFFERENTIALS
@@ -925,6 +909,8 @@
       flex-wrap: wrap; gap: 12px; font-size: .78rem; color: rgba(255,255,255,.35); text-align: center;
     }
     .footer-br { display: none; }
+    .desk-br { display: block; }
+    @media (max-width: 768px) { .desk-br { display: none; } }
     @media (max-width: 700px) {
       .footer-br { display: block; }
       .footer__bottom { flex-direction: column; gap: 8px; }
@@ -1153,64 +1139,6 @@
     </div>
   </section>
 
-  <!-- ===================== NR-01 ===================== -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="nr01__grid">
-        <div class="nr01__text reveal">
-          <div class="section-tag">NR-01 Atualizada</div>
-          <h2 class="section-title">Sua empresa está preparada para as <span>mudanças na NR-01?</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">A nova NR-01 exige que toda empresa implemente o Gerenciamento de Riscos Ocupacionais (GRO) com PGR atualizado, identificação de perigos e planos de ação documentados. A não conformidade gera autuações imediatas.</p>
-          <div class="nr01__check-list">
-            <div class="nr01__check-item">
-              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>PGR elaborado e atualizado conforme os novos requisitos da NR-01</span>
-            </div>
-            <div class="nr01__check-item">
-              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Identificação e avaliação de todos os riscos ocupacionais presentes</span>
-            </div>
-            <div class="nr01__check-item">
-              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Planos de ação documentados e prazos de implementação definidos</span>
-            </div>
-            <div class="nr01__check-item">
-              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Integração com eSocial e envio correto dos eventos de SST</span>
-            </div>
-          </div>
-          <p style="font-size:.94rem; color:var(--navy); font-weight:600; border-left:3px solid #0eb89d; padding-left:14px; line-height:1.6;">Com a BMR você garante que tudo esteja em conformidade e evita passivos trabalhistas.</p>
-        </div>
-        <div class="brain-wrap reveal-right">
-          <div class="brain-glass">
-            <div class="brain-ring brain-ring--1"></div>
-            <div class="brain-ring brain-ring--2"></div>
-            <div class="brain-ring brain-ring--3"></div>
-            <svg class="brain-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M50 18 C44 18 38 21 35 26 C31 24 26 25 23 29 C19 28 15 31 15 36 C12 38 10 42 11 46 C9 50 10 55 13 58 C12 62 14 67 18 69 C19 74 24 77 29 76 C32 80 37 82 42 81 C44 84 47 85 50 85" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M50 18 C56 18 62 21 65 26 C69 24 74 25 77 29 C81 28 85 31 85 36 C88 38 90 42 89 46 C91 50 90 55 87 58 C88 62 86 67 82 69 C81 74 76 77 71 76 C68 80 63 82 58 81 C56 84 53 85 50 85" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M50 85 L50 92" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M43 92 L57 92" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
-              <!-- inner folds left -->
-              <path d="M35 26 C36 32 33 38 35 44 C37 50 34 56 36 62" stroke="#0eb89d" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
-              <path d="M23 36 C26 41 24 47 27 52 C29 57 28 63 31 67" stroke="#0eb89d" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-              <!-- inner folds right -->
-              <path d="M65 26 C64 32 67 38 65 44 C63 50 66 56 64 62" stroke="#0eb89d" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
-              <path d="M77 36 C74 41 76 47 73 52 C71 57 72 63 69 67" stroke="#0eb89d" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-              <!-- center divide -->
-              <path d="M50 22 C50 35 50 50 50 85" stroke="#0eb89d" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,4" opacity=".4"/>
-              <!-- dots -->
-              <circle cx="50" cy="50" r="3" fill="#0eb89d" opacity=".6"/>
-              <circle cx="30" cy="48" r="2" fill="#0eb89d" opacity=".4"/>
-              <circle cx="70" cy="48" r="2" fill="#0eb89d" opacity=".4"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== SOLUTIONS ===================== -->
   <section class="section section--dark" id="solucoes">
     <div class="container">
@@ -1331,8 +1259,11 @@
             <div class="voice-player__bars" id="vpBars"></div>
             <button class="voice-player__btn" id="vpBtn" aria-label="Reproduzir apresentação">
               <!-- Mic icon (idle) -->
-              <svg class="vp-icon-play" width="28" height="28" viewBox="0 0 24 24" fill="#fff" stroke="none">
-                <polygon points="6,3 20,12 6,21"/>
+              <svg class="vp-icon-play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+                <path d="M19 10v2a7 7 0 01-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
               </svg>
               <!-- Pause icon (playing) -->
               <svg class="vp-icon-pause" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1367,13 +1298,102 @@
     </div>
   </section>
 
+  <!-- ===================== NR-01 ===================== -->
+  <section class="section section--dark" id="nr01">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-tag">Atenção Obrigatória</div>
+        <h2 class="section-title">Sua empresa está preparada para as<br><span>mudanças da NR-01?</span></h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">A atualização da NR-01 tornou o PGR obrigatório para todas as empresas com vínculos celetistas. Quem não se adequar está exposto a multas, autuações e passivos trabalhistas.</p>
+      </div>
+      <div class="nr01__grid">
+        <div class="reveal">
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:10px;">O que a nova NR-01 exige da sua empresa:</h3>
+          <p style="font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;">Com as exigências em vigor, toda empresa deve implementar e manter atualizado o Programa de Gerenciamento de Riscos, integrando todas as Normas Regulamentadoras aplicáveis.</p>
+          <div class="nr01__checks">
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>PGR elaborado, documentado e assinado por profissional habilitado</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Inventário de riscos ocupacionais identificados e avaliados</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Plano de ação com medidas preventivas e prazos definidos</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Integração com PCMSO, LTCAT, PPP e envio ao eSocial</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Revisão periódica e capacitação dos trabalhadores</span>
+            </div>
+          </div>
+          <a href="https://wa.me/5511945161222?text=Ol%C3%A1%2C%20gostaria%20de%20adequar%20minha%20empresa%20%C3%A0%20NR-01." target="_blank" class="btn-glass-nr01">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Adequar minha empresa
+          </a>
+        </div>
+        <div class="nr01__widget reveal-right">
+          <svg class="clipboard-svg" viewBox="0 0 200 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Board body -->
+            <rect x="15" y="24" width="170" height="240" rx="10" fill="rgba(14,184,157,.06)" stroke="#0eb89d" stroke-width="1.6" stroke-opacity=".75"/>
+            <!-- Inner paper -->
+            <rect x="26" y="50" width="148" height="207" rx="6" fill="rgba(14,184,157,.04)" stroke="#0eb89d" stroke-width=".8" stroke-opacity=".28"/>
+            <!-- Clip outer -->
+            <rect x="70" y="10" width="60" height="28" rx="6" fill="rgba(14,184,157,.12)" stroke="#0eb89d" stroke-width="1.5" stroke-opacity=".8"/>
+            <!-- Clip inner bolt -->
+            <rect x="83" y="5" width="34" height="15" rx="4" fill="rgba(14,184,157,.22)" stroke="#0eb89d" stroke-width="1.2" stroke-opacity=".9"/>
+            <!-- Title bar -->
+            <rect x="38" y="58" width="124" height="9" rx="3" fill="rgba(14,184,157,.28)"/>
+            <line x1="26" y1="78" x2="174" y2="78" stroke="#0eb89d" stroke-width=".6" stroke-opacity=".3"/>
+            <!-- ITEM 1 — y=97 -->
+            <rect class="ck-fill ck-fill-1" x="34" y="85" width="22" height="22" rx="4" fill="rgba(14,184,157,.22)"/>
+            <rect x="34" y="85" width="22" height="22" rx="4" stroke="#0eb89d" stroke-width="1.4" stroke-opacity=".85" fill="none"/>
+            <path class="ck-check ck-check-1" d="M38,96 L44,102 L53,89" stroke="#0eb89d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="63" y="88" width="96" height="7" rx="2.5" fill="rgba(14,184,157,.2)"/>
+            <rect x="63" y="99" width="70" height="6" rx="2" fill="rgba(14,184,157,.1)"/>
+            <!-- ITEM 2 — y=132 -->
+            <rect class="ck-fill ck-fill-2" x="34" y="120" width="22" height="22" rx="4" fill="rgba(14,184,157,.22)"/>
+            <rect x="34" y="120" width="22" height="22" rx="4" stroke="#0eb89d" stroke-width="1.4" stroke-opacity=".85" fill="none"/>
+            <path class="ck-check ck-check-2" d="M38,131 L44,137 L53,124" stroke="#0eb89d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="63" y="123" width="88" height="7" rx="2.5" fill="rgba(14,184,157,.2)"/>
+            <rect x="63" y="134" width="76" height="6" rx="2" fill="rgba(14,184,157,.1)"/>
+            <!-- ITEM 3 — y=167 -->
+            <rect class="ck-fill ck-fill-3" x="34" y="155" width="22" height="22" rx="4" fill="rgba(14,184,157,.22)"/>
+            <rect x="34" y="155" width="22" height="22" rx="4" stroke="#0eb89d" stroke-width="1.4" stroke-opacity=".85" fill="none"/>
+            <path class="ck-check ck-check-3" d="M38,166 L44,172 L53,159" stroke="#0eb89d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="63" y="158" width="100" height="7" rx="2.5" fill="rgba(14,184,157,.2)"/>
+            <rect x="63" y="169" width="66" height="6" rx="2" fill="rgba(14,184,157,.1)"/>
+            <!-- ITEM 4 — y=202 -->
+            <rect class="ck-fill ck-fill-4" x="34" y="190" width="22" height="22" rx="4" fill="rgba(14,184,157,.22)"/>
+            <rect x="34" y="190" width="22" height="22" rx="4" stroke="#0eb89d" stroke-width="1.4" stroke-opacity=".85" fill="none"/>
+            <path class="ck-check ck-check-4" d="M38,201 L44,207 L53,194" stroke="#0eb89d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="63" y="193" width="93" height="7" rx="2.5" fill="rgba(14,184,157,.2)"/>
+            <rect x="63" y="204" width="80" height="6" rx="2" fill="rgba(14,184,157,.1)"/>
+            <!-- ITEM 5 — y=237 -->
+            <rect class="ck-fill ck-fill-5" x="34" y="225" width="22" height="22" rx="4" fill="rgba(14,184,157,.22)"/>
+            <rect x="34" y="225" width="22" height="22" rx="4" stroke="#0eb89d" stroke-width="1.4" stroke-opacity=".85" fill="none"/>
+            <path class="ck-check ck-check-5" d="M38,236 L44,242 L53,229" stroke="#0eb89d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="63" y="228" width="86" height="7" rx="2.5" fill="rgba(14,184,157,.2)"/>
+            <rect x="63" y="239" width="72" height="6" rx="2" fill="rgba(14,184,157,.1)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== BENEFITS ===================== -->
   <section class="section">
     <div class="container">
       <div class="benefits__header-wrap">
         <div class="reveal">
           <div class="section-tag">Resultados</div>
-          <h2 class="section-title">Resultados que sua empresa <span>pode alcançar</span></h2>
+          <h2 class="section-title">Resultados que sua empresa<br class="desk-br"> <span>pode alcançar</span></h2>
           <div class="divider"></div>
           <p class="section-subtitle">Empresas que contam com gestão profissional de SST operam com mais segurança, eficiência e tranquilidade jurídica.</p>
         </div>
