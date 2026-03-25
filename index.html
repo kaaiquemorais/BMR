@@ -17,7 +17,7 @@
        RESET & BASE
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: 'Sora', sans-serif;
       background: #ffffff;
@@ -975,6 +975,8 @@
     .footer-br { display: none; }
     .desk-br { display: block; }
     @media (max-width: 768px) { .desk-br { display: none; } }
+    .mob-br { display: none; }
+    @media (max-width: 768px) { .mob-br { display: block; } }
     @media (max-width: 768px) { .nr01-span-mob { font-size: clamp(1.1rem, 4.5vw, 1.6rem); } }
     @media (max-width: 700px) {
       .footer-br { display: block; }
@@ -2086,7 +2088,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
       <div class="unit-modal__title">Selecione sua unidade</div>
-      <div class="unit-modal__sub">Fale com o especialista mais próximo de você</div>
+      <div class="unit-modal__sub">Fale com o especialista mais<br class="mob-br"> próximo de você</div>
       <div class="unit-modal__options">
         <a href="https://wa.me/5511968511154" target="_blank" class="unit-modal__option">
           <div class="unit-modal__option-icon">
