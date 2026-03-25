@@ -461,6 +461,74 @@
     .nr-tag--more { background: transparent; border-style: dashed; color: var(--muted); font-style: italic; }
 
     /* ============================================================
+       NR01 SECTION
+    ============================================================ */
+    .nr01__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .nr01__text .section-tag { margin-bottom: 16px; }
+    .nr01__text .section-title { margin-bottom: 16px; }
+    .nr01__text .section-subtitle { margin-bottom: 28px; }
+    .nr01__check-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .nr01__check-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .92rem; color: var(--slate); line-height: 1.6;
+    }
+    .nr01__check-icon {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--green-dim); border: 1px solid rgba(14,184,157,.3);
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    /* Brain widget */
+    .brain-wrap {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .brain-glass {
+      position: relative; width: 320px; height: 320px; border-radius: 50%;
+      background: rgba(14,184,157,.06);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(14,184,157,.22);
+      box-shadow: 0 0 60px rgba(14,184,157,.12), inset 0 0 40px rgba(14,184,157,.05);
+      display: flex; align-items: center; justify-content: center;
+      overflow: visible;
+    }
+    .brain-glass::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(14,184,157,.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .brain-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(14,184,157,.1);
+      animation: brainPulse 3s ease-in-out infinite;
+    }
+    .brain-ring--1 { width: 360px; height: 360px; animation-delay: 0s; }
+    .brain-ring--2 { width: 400px; height: 400px; animation-delay: .6s; opacity: .6; }
+    .brain-ring--3 { width: 440px; height: 440px; animation-delay: 1.2s; opacity: .3; }
+    @keyframes brainPulse {
+      0%, 100% { transform: scale(1); opacity: .8; }
+      50% { transform: scale(1.04); opacity: .3; }
+    }
+    .brain-svg {
+      width: 160px; height: 160px;
+      animation: brainSpin 18s linear infinite;
+      filter: drop-shadow(0 0 18px rgba(14,184,157,.5));
+    }
+    @keyframes brainSpin {
+      from { transform: rotateY(0deg); }
+      to   { transform: rotateY(360deg); }
+    }
+    @media (max-width: 768px) {
+      .nr01__grid { grid-template-columns: 1fr; gap: 40px; }
+      .brain-glass { width: 240px; height: 240px; }
+      .brain-ring--1 { width: 270px; height: 270px; }
+      .brain-ring--2 { width: 300px; height: 300px; }
+      .brain-ring--3 { width: 330px; height: 330px; }
+      .brain-svg { width: 120px; height: 120px; }
+    }
+
+    /* ============================================================
        BENEFITS
     ============================================================ */
     .benefits__header-wrap {
@@ -1079,6 +1147,64 @@
               <div class="radar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
               <span class="radar-label">Multas trabalhistas</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NR-01 ===================== -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="nr01__grid">
+        <div class="nr01__text reveal">
+          <div class="section-tag">NR-01 Atualizada</div>
+          <h2 class="section-title">Sua empresa está preparada para as <span>mudanças na NR-01?</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">A nova NR-01 exige que toda empresa implemente o Gerenciamento de Riscos Ocupacionais (GRO) com PGR atualizado, identificação de perigos e planos de ação documentados. A não conformidade gera autuações imediatas.</p>
+          <div class="nr01__check-list">
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>PGR elaborado e atualizado conforme os novos requisitos da NR-01</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Identificação e avaliação de todos os riscos ocupacionais presentes</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Planos de ação documentados e prazos de implementação definidos</span>
+            </div>
+            <div class="nr01__check-item">
+              <div class="nr01__check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0eb89d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span>Integração com eSocial e envio correto dos eventos de SST</span>
+            </div>
+          </div>
+          <p style="font-size:.94rem; color:var(--navy); font-weight:600; border-left:3px solid #0eb89d; padding-left:14px; line-height:1.6;">Com a BMR você garante que tudo esteja em conformidade e evita passivos trabalhistas.</p>
+        </div>
+        <div class="brain-wrap reveal-right">
+          <div class="brain-glass">
+            <div class="brain-ring brain-ring--1"></div>
+            <div class="brain-ring brain-ring--2"></div>
+            <div class="brain-ring brain-ring--3"></div>
+            <svg class="brain-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M50 18 C44 18 38 21 35 26 C31 24 26 25 23 29 C19 28 15 31 15 36 C12 38 10 42 11 46 C9 50 10 55 13 58 C12 62 14 67 18 69 C19 74 24 77 29 76 C32 80 37 82 42 81 C44 84 47 85 50 85" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M50 18 C56 18 62 21 65 26 C69 24 74 25 77 29 C81 28 85 31 85 36 C88 38 90 42 89 46 C91 50 90 55 87 58 C88 62 86 67 82 69 C81 74 76 77 71 76 C68 80 63 82 58 81 C56 84 53 85 50 85" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M50 85 L50 92" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M43 92 L57 92" stroke="#0eb89d" stroke-width="2.2" stroke-linecap="round"/>
+              <!-- inner folds left -->
+              <path d="M35 26 C36 32 33 38 35 44 C37 50 34 56 36 62" stroke="#0eb89d" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+              <path d="M23 36 C26 41 24 47 27 52 C29 57 28 63 31 67" stroke="#0eb89d" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+              <!-- inner folds right -->
+              <path d="M65 26 C64 32 67 38 65 44 C63 50 66 56 64 62" stroke="#0eb89d" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+              <path d="M77 36 C74 41 76 47 73 52 C71 57 72 63 69 67" stroke="#0eb89d" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+              <!-- center divide -->
+              <path d="M50 22 C50 35 50 50 50 85" stroke="#0eb89d" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,4" opacity=".4"/>
+              <!-- dots -->
+              <circle cx="50" cy="50" r="3" fill="#0eb89d" opacity=".6"/>
+              <circle cx="30" cy="48" r="2" fill="#0eb89d" opacity=".4"/>
+              <circle cx="70" cy="48" r="2" fill="#0eb89d" opacity=".4"/>
+            </svg>
           </div>
         </div>
       </div>
